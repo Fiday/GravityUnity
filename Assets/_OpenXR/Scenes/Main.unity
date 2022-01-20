@@ -1240,6 +1240,24 @@ Transform:
   m_Father: {fileID: 1706936995}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1997524725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8015740316087814669, guid: 2033db0a590a704479033e4f69730b67,
+    type: 3}
+  m_PrefabInstance: {fileID: 5659964616944704380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1997524727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997524725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e6f16792214904296a23e98082c968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &2070342862 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5869418264746138613, guid: f69be5dc756f9024b897f8a970211d36,
@@ -1521,6 +1539,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1862139205440288175, guid: 2033db0a590a704479033e4f69730b67,
+        type: 3}
+      propertyPath: _pullRadius
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6294585129965210280, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
       propertyPath: m_RootOrder

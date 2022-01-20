@@ -1,14 +1,11 @@
 using System;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
-using Debug = UnityEngine.Debug;
 
 public class GravityObject : XRGrabInteractable
 {
     private GameObject blackHole;
-    //   private XRIDefaultInputActions _controls;
 
     private float minSize = 0.03f;
     private float maxSize = 0.6f;
@@ -27,8 +24,6 @@ public class GravityObject : XRGrabInteractable
 
     protected override void Awake()
     {
-        /*_controls = new XRIDefaultInputActions();
-        _controls.XRIRightHand.SetCallbacks(this);*/
         base.Awake();
 
         resetReference.action.canceled += ResetPos;
@@ -62,24 +57,18 @@ public class GravityObject : XRGrabInteractable
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (blackHole.GetComponent<Blackhole>().Active)
+        var blackHoleObject = blackHole.GetComponent<Blackhole>();
+        if (blackHoleObject.Active)
         {
-            var blackHolePos = blackHole.transform.position;
-            var blackHoleObject = blackHole.GetComponent<Blackhole>();
-            var current = transform.position;
-            Vector3 gravityVector = blackHolePos - current;
-
-            float gravityDistance = Vector3.Distance(blackHolePos, current);
-            if (gravityDistance < blackHoleObject.pullRadius)
-            {
-                GetComponent<Rigidbody>().AddForce(5.0f * gravityVector);
-            }
+            var rigidBody = GetComponent<Rigidbody>();
+            rigidBody.AddForce(blackHoleObject.CalculateGravityPull(transform.position, rigidBody.mass), ForceMode.Impulse);
         }
     }
-
+    
     private void ResetPos(InputAction.CallbackContext context)
     {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
+        transform.position = new Vector3(1, 1, -3);
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -103,7 +92,7 @@ public class GravityObject : XRGrabInteractable
     {
         controller = null;
 
-        // Needs to at least by a Base Controller Interactor
+        // Needs to at least be a Base Controller Interactor
         if (selectingInteractor is XRBaseControllerInteractor interactor)
         {
             // Make sure that Controller is Action-Based
