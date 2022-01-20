@@ -470,15 +470,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "ResetBall",
-                    "type": "Button",
-                    "id": "d15f4fb4-087e-4301-88fc-e4a9e17486a2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -646,17 +637,6 @@
                     "action": "Haptic Device",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "414c33e8-2dee-49cc-9e7d-b79b59d09702",
-                    "path": "<XRInputV1::Valve::IndexControllerOpenXR>/primarybutton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "ResetBall",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -672,17 +652,77 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Spawn new",
+                    "type": "Button",
+                    "id": "fbbe3eab-d1e3-4e4c-b7dc-49768a17f879",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeSize",
+                    "type": "Value",
+                    "id": "5adef445-c183-4279-90cd-603fe9588154",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ChangeWeigth",
+                    "type": "Value",
+                    "id": "c4162bef-35e8-4f3e-b9de-33f41fae0ee5",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "d81fea40-185a-454b-b4e1-8cbdd7c34eda",
-                    "path": "<XRController>{RightHand}/primaryButton",
+                    "path": "<XRController>{RightHand}/secondaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee9a083f-148f-4496-9c56-762c01eafda9",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spawn new",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a4605be-4725-434d-9a4f-6f793083edfa",
+                    "path": "<ValveIndexController>{RightHand}/thumbstick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeSize",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "212a326a-64c4-4c89-90cc-d133c4421abe",
+                    "path": "<ValveIndexController>{LeftHand}/thumbstick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeWeigth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,15 +1,27 @@
 using System;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using Debug = UnityEngine.Debug;
 
 public class GravityObject : XRGrabInteractable
 {
     private GameObject blackHole;
     //   private XRIDefaultInputActions _controls;
 
+    private float minSize = 0.03f;
+    private float maxSize = 0.6f;
+    private float currentSize = 0f;
+
+    private float minWeight = 0.1f;
+    private float maxWeight = 150f;
+    private float currentWeight = 0f;
+
     private Vector3 _originalScale = new Vector3(0.2f, 0.2f, 0.2f);
     public InputActionReference resetReference = null;
+    public InputActionReference ballSizeReference = null;
+    public InputActionReference ballWeightReference = null;
 
     private MeshRenderer _meshRenderer = null;
 
@@ -19,14 +31,20 @@ public class GravityObject : XRGrabInteractable
         _controls.XRIRightHand.SetCallbacks(this);*/
         base.Awake();
 
-        resetReference.action.started += ResetPos;
+        resetReference.action.canceled += ResetPos;
+        ballSizeReference.action.performed += ChangeBallSize;
+        ballWeightReference.action.performed += ChangeBallWeight;
         blackHole = GameObject.FindGameObjectWithTag("BlackHole");
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
 
     protected override void OnDestroy()
     {
-        resetReference.action.started -= ResetPos;
+        resetReference.action.canceled -= ResetPos;
+        ballSizeReference.action.performed -= ChangeBallSize;
+        ballWeightReference.action.performed -= ChangeBallWeight;
+
+
         base.OnDestroy();
     }
 
@@ -37,11 +55,6 @@ public class GravityObject : XRGrabInteractable
 
     private void Update()
     {
-        if (IsControllerActionBased(out var controller))
-        {
-            // Now that we know we have the right controller, get the value of the activate (trigger-pull)
-            var activateValue = GetActionValue(controller.activateAction);
-        }
     }
     //TODO Watch this
     //https://www.youtube.com/watch?v=jOn0YWoNFVY
@@ -57,36 +70,34 @@ public class GravityObject : XRGrabInteractable
             Vector3 gravityVector = blackHolePos - current;
 
             float gravityDistance = Vector3.Distance(blackHolePos, current);
-            Debug.Log(blackHoleObject.pullRadius);
             if (gravityDistance < blackHoleObject.pullRadius)
             {
                 GetComponent<Rigidbody>().AddForce(5.0f * gravityVector);
             }
-
-            /*Debug.Log($"Current: {current}");
-            Vector3 gravityVector = blackHolePos - current;
-            float gravityDistance = Vector3.Distance(blackHolePos, current);
-            Debug.Log($"Distance: {gravityDistance}");
-            Debug.Log($"PullRange: {blackHoleObject.PullRadius}");
-            if (gravityDistance < blackHoleObject.PullRadius)
-            {
-                Vector3 gravityStrength = Vector3.zero;
-                gravityStrength.x = blackHoleObject.GravityConstant / Mathf.Pow(gravityDistance, 2);
-                gravityStrength.z = blackHoleObject.GravityConstant / Mathf.Pow(gravityDistance, 2);
-                gravityStrength.y = blackHoleObject.GravityConstant / Mathf.Pow(gravityDistance, 2);
-                Debug.Log($"PullRange: {blackHoleObject.GravityConstant}");
-
-                force = Vector3.Scale(gravityStrength, gravityVector);
-                Debug.Log("HALLI");
-            }*/
         }
     }
-    
+
     private void ResetPos(InputAction.CallbackContext context)
     {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
-        transform.position = new Vector3(1, 1, -3);
     }
+
+    public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
+    {
+        base.ProcessInteractable(updatePhase);
+
+        // If the object is held
+        if (isSelected)
+        {
+            // During Update
+            if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
+            {
+                ApplyScale(currentSize);
+                ApplyWeightScale(currentWeight);
+            }
+        }
+    }
+
 
     private bool IsControllerActionBased(out ActionBasedController controller)
     {
@@ -104,6 +115,24 @@ public class GravityObject : XRGrabInteractable
         return controller != null;
     }
 
+
+    private void ChangeBallSize(InputAction.CallbackContext context)
+    {
+        //Debug.Log($"Joystick = {context.ReadValue<Vector2>().y}");
+        currentSize = context.ReadValue<float>();
+        // GetComponent<Rigidbody>().velocity = Vector3.zero;
+        // transform.position = new Vector3(1, 1, -3);
+    }
+
+    private void ChangeBallWeight(InputAction.CallbackContext context)
+    {
+        //Debug.Log($"Joystick = {context.ReadValue<Vector2>().y}");
+        currentWeight = context.ReadValue<float>();
+        // GetComponent<Rigidbody>().velocity = Vector3.zero;
+        // transform.position = new Vector3(1, 1, -3);
+    }
+
+
     private float GetActionValue(InputActionProperty inputAction)
     {
         // Read the float value, this can be a more advanced function with generics
@@ -112,7 +141,25 @@ public class GravityObject : XRGrabInteractable
 
     private void ApplyScale(float value)
     {
-        var newScale = _originalScale + (_originalScale * value);
-        transform.localScale = newScale;
+        if (value == 0f) return;
+        var temp = transform.localScale.x;
+
+        temp *= 1 + value / 10f;
+        var scale = Mathf.Clamp(temp, minSize, maxSize);
+
+        transform.localScale = new Vector3(scale, scale, scale);
+        currentSize = 0f;
+    }
+
+    private void ApplyWeightScale(float value)
+    {
+        if (value == 0) return;
+        Rigidbody ri = GetComponent<Rigidbody>();
+        var temp = ri.mass;
+
+        temp *= 1 + value / 10f;
+        var scale = Mathf.Clamp(temp, minWeight, maxWeight);
+        GetComponent<Rigidbody>().mass = scale;
+        currentWeight = 0f;
     }
 }

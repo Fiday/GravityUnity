@@ -3,14 +3,17 @@ using UnityEngine.InputSystem;
 
 public class AssetInputExample : MonoBehaviour
 {
-    public bool printStuff = true;
+    public bool printStuff = false;
     public InputActionReference testReference = null;
+    public InputActionReference spawnNewGravityObject = null;
+    public GameObject gravityObjectPrefab;
 
     private void Start()
     {
         testReference.action.started += DoPressedThing;
         testReference.action.performed += DoChangeThing;
         testReference.action.canceled += DoReleasedThing;
+        spawnNewGravityObject.action.canceled += SpawnNew;
     }
 
     private void OnEnable()
@@ -28,6 +31,7 @@ public class AssetInputExample : MonoBehaviour
         testReference.action.started -= DoPressedThing;
         testReference.action.performed -= DoChangeThing;
         testReference.action.canceled -= DoReleasedThing;
+        spawnNewGravityObject.action.canceled -= SpawnNew;
     }
 
     private void DoPressedThing(InputAction.CallbackContext context)
@@ -46,5 +50,11 @@ public class AssetInputExample : MonoBehaviour
     {
         if (printStuff)
             print("Released");
+    }
+
+    private void SpawnNew(InputAction.CallbackContext context)
+    {
+        GameObject gravityObject = Instantiate(gravityObjectPrefab, transform);
+        gravityObject.transform.position = new Vector3(1, 1, -3);
     }
 }

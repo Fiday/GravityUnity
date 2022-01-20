@@ -492,15 +492,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""ResetBall"",
-                    ""type"": ""Button"",
-                    ""id"": ""d15f4fb4-087e-4301-88fc-e4a9e17486a2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -668,17 +659,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""action"": ""Haptic Device"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""414c33e8-2dee-49cc-9e7d-b79b59d09702"",
-                    ""path"": ""<XRInputV1::Valve::IndexControllerOpenXR>/primarybutton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Generic XR Controller"",
-                    ""action"": ""ResetBall"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -694,17 +674,77 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spawn new"",
+                    ""type"": ""Button"",
+                    ""id"": ""fbbe3eab-d1e3-4e4c-b7dc-49768a17f879"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeSize"",
+                    ""type"": ""Value"",
+                    ""id"": ""5adef445-c183-4279-90cd-603fe9588154"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeWeigth"",
+                    ""type"": ""Value"",
+                    ""id"": ""c4162bef-35e8-4f3e-b9de-33f41fae0ee5"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""d81fea40-185a-454b-b4e1-8cbdd7c34eda"",
-                    ""path"": ""<XRController>{RightHand}/primaryButton"",
+                    ""path"": ""<XRController>{RightHand}/secondaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee9a083f-148f-4496-9c56-762c01eafda9"",
+                    ""path"": ""<XRController>{RightHand}/primaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spawn new"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a4605be-4725-434d-9a4f-6f793083edfa"",
+                    ""path"": ""<ValveIndexController>{RightHand}/thumbstick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSize"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""212a326a-64c4-4c89-90cc-d133c4421abe"",
+                    ""path"": ""<ValveIndexController>{LeftHand}/thumbstick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeWeigth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -806,10 +846,12 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRIRightHand_Move = m_XRIRightHand.FindAction("Move", throwIfNotFound: true);
         m_XRIRightHand_RotateAnchor = m_XRIRightHand.FindAction("Rotate Anchor", throwIfNotFound: true);
         m_XRIRightHand_TranslateAnchor = m_XRIRightHand.FindAction("Translate Anchor", throwIfNotFound: true);
-        m_XRIRightHand_ResetBall = m_XRIRightHand.FindAction("ResetBall", throwIfNotFound: true);
         // Custom
         m_Custom = asset.FindActionMap("Custom", throwIfNotFound: true);
         m_Custom_Reset = m_Custom.FindAction("Reset", throwIfNotFound: true);
+        m_Custom_Spawnnew = m_Custom.FindAction("Spawn new", throwIfNotFound: true);
+        m_Custom_ChangeSize = m_Custom.FindAction("ChangeSize", throwIfNotFound: true);
+        m_Custom_ChangeWeigth = m_Custom.FindAction("ChangeWeigth", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1052,7 +1094,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     private readonly InputAction m_XRIRightHand_Move;
     private readonly InputAction m_XRIRightHand_RotateAnchor;
     private readonly InputAction m_XRIRightHand_TranslateAnchor;
-    private readonly InputAction m_XRIRightHand_ResetBall;
     public struct XRIRightHandActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -1070,7 +1111,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         public InputAction @Move => m_Wrapper.m_XRIRightHand_Move;
         public InputAction @RotateAnchor => m_Wrapper.m_XRIRightHand_RotateAnchor;
         public InputAction @TranslateAnchor => m_Wrapper.m_XRIRightHand_TranslateAnchor;
-        public InputAction @ResetBall => m_Wrapper.m_XRIRightHand_ResetBall;
         public InputActionMap Get() { return m_Wrapper.m_XRIRightHand; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1119,9 +1159,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @TranslateAnchor.started -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnTranslateAnchor;
                 @TranslateAnchor.performed -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnTranslateAnchor;
                 @TranslateAnchor.canceled -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnTranslateAnchor;
-                @ResetBall.started -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnResetBall;
-                @ResetBall.performed -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnResetBall;
-                @ResetBall.canceled -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnResetBall;
             }
             m_Wrapper.m_XRIRightHandActionsCallbackInterface = instance;
             if (instance != null)
@@ -1165,9 +1202,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @TranslateAnchor.started += instance.OnTranslateAnchor;
                 @TranslateAnchor.performed += instance.OnTranslateAnchor;
                 @TranslateAnchor.canceled += instance.OnTranslateAnchor;
-                @ResetBall.started += instance.OnResetBall;
-                @ResetBall.performed += instance.OnResetBall;
-                @ResetBall.canceled += instance.OnResetBall;
             }
         }
     }
@@ -1177,11 +1211,17 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     private readonly InputActionMap m_Custom;
     private ICustomActions m_CustomActionsCallbackInterface;
     private readonly InputAction m_Custom_Reset;
+    private readonly InputAction m_Custom_Spawnnew;
+    private readonly InputAction m_Custom_ChangeSize;
+    private readonly InputAction m_Custom_ChangeWeigth;
     public struct CustomActions
     {
         private @XRIDefaultInputActions m_Wrapper;
         public CustomActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Reset => m_Wrapper.m_Custom_Reset;
+        public InputAction @Spawnnew => m_Wrapper.m_Custom_Spawnnew;
+        public InputAction @ChangeSize => m_Wrapper.m_Custom_ChangeSize;
+        public InputAction @ChangeWeigth => m_Wrapper.m_Custom_ChangeWeigth;
         public InputActionMap Get() { return m_Wrapper.m_Custom; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1194,6 +1234,15 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Reset.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnReset;
                 @Reset.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnReset;
                 @Reset.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnReset;
+                @Spawnnew.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnnew;
+                @Spawnnew.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnnew;
+                @Spawnnew.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnnew;
+                @ChangeSize.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnChangeSize;
+                @ChangeSize.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnChangeSize;
+                @ChangeSize.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnChangeSize;
+                @ChangeWeigth.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnChangeWeigth;
+                @ChangeWeigth.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnChangeWeigth;
+                @ChangeWeigth.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnChangeWeigth;
             }
             m_Wrapper.m_CustomActionsCallbackInterface = instance;
             if (instance != null)
@@ -1201,6 +1250,15 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Reset.started += instance.OnReset;
                 @Reset.performed += instance.OnReset;
                 @Reset.canceled += instance.OnReset;
+                @Spawnnew.started += instance.OnSpawnnew;
+                @Spawnnew.performed += instance.OnSpawnnew;
+                @Spawnnew.canceled += instance.OnSpawnnew;
+                @ChangeSize.started += instance.OnChangeSize;
+                @ChangeSize.performed += instance.OnChangeSize;
+                @ChangeSize.canceled += instance.OnChangeSize;
+                @ChangeWeigth.started += instance.OnChangeWeigth;
+                @ChangeWeigth.performed += instance.OnChangeWeigth;
+                @ChangeWeigth.canceled += instance.OnChangeWeigth;
             }
         }
     }
@@ -1268,10 +1326,12 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         void OnMove(InputAction.CallbackContext context);
         void OnRotateAnchor(InputAction.CallbackContext context);
         void OnTranslateAnchor(InputAction.CallbackContext context);
-        void OnResetBall(InputAction.CallbackContext context);
     }
     public interface ICustomActions
     {
         void OnReset(InputAction.CallbackContext context);
+        void OnSpawnnew(InputAction.CallbackContext context);
+        void OnChangeSize(InputAction.CallbackContext context);
+        void OnChangeWeigth(InputAction.CallbackContext context);
     }
 }
