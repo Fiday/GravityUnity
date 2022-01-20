@@ -32,6 +32,7 @@ public class GravityObject : XRGrabInteractable
     public InputActionReference ballWeightReference = null;
 
     private MeshRenderer _meshRenderer = null;
+    private TrailRenderer _trailRenderer = null;
 
     protected override void Awake()
     {
@@ -42,6 +43,8 @@ public class GravityObject : XRGrabInteractable
         ballWeightReference.action.performed += ChangeBallWeight;
         blackHole = GameObject.FindGameObjectWithTag("BlackHole");
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
+        _trailRenderer = GetComponentInChildren<TrailRenderer>();
+        _trailRenderer.startWidth = transform.localScale.x;
     }
 
     protected override void OnDestroy()
@@ -147,6 +150,7 @@ public class GravityObject : XRGrabInteractable
         var scale = Mathf.Clamp(temp, MinSize, MaxSize);
 
         transform.localScale = new Vector3(scale, scale, scale);
+        _trailRenderer.startWidth = transform.localScale.x;
         _currentSize = 0f;
     }
 
