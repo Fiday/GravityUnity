@@ -9,7 +9,7 @@ public class GravityObject : XRGrabInteractable
     //   private XRIDefaultInputActions _controls;
 
     private Vector3 _originalScale = new Vector3(0.2f, 0.2f, 0.2f);
-
+    public InputActionReference resetReference = null;
 
     private MeshRenderer _meshRenderer = null;
 
@@ -18,8 +18,16 @@ public class GravityObject : XRGrabInteractable
         /*_controls = new XRIDefaultInputActions();
         _controls.XRIRightHand.SetCallbacks(this);*/
         base.Awake();
+
+        resetReference.action.started += ResetPos;
         blackHole = GameObject.FindGameObjectWithTag("BlackHole");
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
+    }
+
+    protected override void OnDestroy()
+    {
+        resetReference.action.started -= ResetPos;
+        base.OnDestroy();
     }
 
     // Start is called before the first frame update
@@ -33,14 +41,6 @@ public class GravityObject : XRGrabInteractable
         {
             // Now that we know we have the right controller, get the value of the activate (trigger-pull)
             var activateValue = GetActionValue(controller.activateAction);
-
-            Debug.Log($"Presseforce = {activateValue}");
-
-            // Apply that value to the object
-            if (Math.Abs(activateValue - 1) < 0.01)
-            {
-                ResetPos();
-            }
         }
     }
     //TODO Watch this
@@ -81,9 +81,8 @@ public class GravityObject : XRGrabInteractable
             }*/
         }
     }
-
-
-    private void ResetPos()
+    
+    private void ResetPos(InputAction.CallbackContext context)
     {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = new Vector3(1, 1, -3);
