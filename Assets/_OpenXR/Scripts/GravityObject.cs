@@ -1,22 +1,30 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class GravityObject : XRGrabInteractable
 {
     private GameObject blackHole;
+    //   private XRIDefaultInputActions _controls;
 
     private Vector3 _originalScale = new Vector3(0.2f, 0.2f, 0.2f);
+
+
+    private MeshRenderer _meshRenderer = null;
+
+    protected override void Awake()
+    {
+        /*_controls = new XRIDefaultInputActions();
+        _controls.XRIRightHand.SetCallbacks(this);*/
+        base.Awake();
+        blackHole = GameObject.FindGameObjectWithTag("BlackHole");
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        blackHole = GameObject.FindGameObjectWithTag("BlackHole");
     }
 
     private void Update()
@@ -35,7 +43,8 @@ public class GravityObject : XRGrabInteractable
             }
         }
     }
-
+    //TODO Watch this
+    //https://www.youtube.com/watch?v=jOn0YWoNFVY
 
     // Update is called once per frame
     void FixedUpdate()
@@ -48,10 +57,12 @@ public class GravityObject : XRGrabInteractable
             Vector3 gravityVector = blackHolePos - current;
 
             float gravityDistance = Vector3.Distance(blackHolePos, current);
-            if (gravityDistance < blackHoleObject.PullRadius)
+            Debug.Log(blackHoleObject.pullRadius);
+            if (gravityDistance < blackHoleObject.pullRadius)
             {
                 GetComponent<Rigidbody>().AddForce(5.0f * gravityVector);
             }
+
             /*Debug.Log($"Current: {current}");
             Vector3 gravityVector = blackHolePos - current;
             float gravityDistance = Vector3.Distance(blackHolePos, current);
@@ -71,15 +82,6 @@ public class GravityObject : XRGrabInteractable
         }
     }
 
-
-    private MeshRenderer _meshRenderer = null;
-
-
-    protected override void Awake()
-    {
-        base.Awake();
-        _meshRenderer = GetComponentInChildren<MeshRenderer>();
-    }
 
     private void ResetPos()
     {
