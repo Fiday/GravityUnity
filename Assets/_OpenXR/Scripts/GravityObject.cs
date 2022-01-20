@@ -5,17 +5,28 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class GravityObject : XRGrabInteractable
 {
+    private float _currentWeight = 0f;
+    private float _currentSize = 0f;
+    private Vector3 _originalScale = new Vector3(0.2f, 0.2f, 0.2f);
     private GameObject blackHole;
 
-    private float minSize = 0.03f;
-    private float maxSize = 0.6f;
-    private float currentSize = 0f;
+    [SerializeField]
+    private float _minSize = 0.03f;
+    
+    [SerializeField]
+    private float _maxSize = 0.6f;
+    
+    [SerializeField]
+    private float _minWeight = 0.1f;
+    
+    [SerializeField]
+    private float _maxWeight = 150f;
 
-    private float minWeight = 0.1f;
-    private float maxWeight = 150f;
-    private float currentWeight = 0f;
+    public float MinSize { get => _minSize; set => _minSize = value; }
+    public float MaxSize { get => _maxSize; set => _maxSize = value; }
+    public float MinWeight { get => _minWeight; set => _minWeight = value; }
+    public float MaxWeight { get => _maxWeight; set => _maxWeight = value; }
 
-    private Vector3 _originalScale = new Vector3(0.2f, 0.2f, 0.2f);
     public InputActionReference resetReference = null;
     public InputActionReference ballSizeReference = null;
     public InputActionReference ballWeightReference = null;
@@ -81,8 +92,8 @@ public class GravityObject : XRGrabInteractable
             // During Update
             if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
             {
-                ApplyScale(currentSize);
-                ApplyWeightScale(currentWeight);
+                ApplyScale(_currentSize);
+                ApplyWeightScale(_currentWeight);
             }
         }
     }
@@ -108,7 +119,7 @@ public class GravityObject : XRGrabInteractable
     private void ChangeBallSize(InputAction.CallbackContext context)
     {
         //Debug.Log($"Joystick = {context.ReadValue<Vector2>().y}");
-        currentSize = context.ReadValue<float>();
+        _currentSize = context.ReadValue<float>();
         // GetComponent<Rigidbody>().velocity = Vector3.zero;
         // transform.position = new Vector3(1, 1, -3);
     }
@@ -116,12 +127,11 @@ public class GravityObject : XRGrabInteractable
     private void ChangeBallWeight(InputAction.CallbackContext context)
     {
         //Debug.Log($"Joystick = {context.ReadValue<Vector2>().y}");
-        currentWeight = context.ReadValue<float>();
+        _currentWeight = context.ReadValue<float>();
         // GetComponent<Rigidbody>().velocity = Vector3.zero;
         // transform.position = new Vector3(1, 1, -3);
     }
-
-
+    
     private float GetActionValue(InputActionProperty inputAction)
     {
         // Read the float value, this can be a more advanced function with generics
@@ -134,10 +144,10 @@ public class GravityObject : XRGrabInteractable
         var temp = transform.localScale.x;
 
         temp *= 1 + value / 10f;
-        var scale = Mathf.Clamp(temp, minSize, maxSize);
+        var scale = Mathf.Clamp(temp, MinSize, MaxSize);
 
         transform.localScale = new Vector3(scale, scale, scale);
-        currentSize = 0f;
+        _currentSize = 0f;
     }
 
     private void ApplyWeightScale(float value)
@@ -147,8 +157,8 @@ public class GravityObject : XRGrabInteractable
         var temp = ri.mass;
 
         temp *= 1 + value / 10f;
-        var scale = Mathf.Clamp(temp, minWeight, maxWeight);
+        var scale = Mathf.Clamp(temp, MinWeight, MaxSize);
         GetComponent<Rigidbody>().mass = scale;
-        currentWeight = 0f;
+        _currentWeight = 0f;
     }
 }

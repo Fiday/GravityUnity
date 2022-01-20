@@ -7,10 +7,10 @@ public class Blackhole : MonoBehaviour
 {
     private float _previousPullRadius = 0;
 
-    private float _gravityConstant = (float)(6.67f * Math.Pow(10, -11));
+    private float _gravityConstant = (float)(6.67f * Math.Pow(10, -10));
 
     [SerializeField]
-    private float _mass = 100000000f;
+    private float _mass = 10000000000000000;
 
     [SerializeField]
     private float _pullRadius = 1.5f;
