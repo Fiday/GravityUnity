@@ -5,34 +5,61 @@ using UnityEngine;
 
 public class Blackhole : MonoBehaviour
 {
-    public float GravityConstant { get; set; }
+    private float _previousPullRadius = 0;
+
+    private float _gravityConstant = (float)(6.67f * Math.Pow(10, -11));
+
+    [SerializeField]
+    private float _mass = 100000000f;
+
+    [SerializeField]
+    private float _pullRadius = 1.5f;
+
 
     public bool Active { get; set; }
 
-    public float pullRadius = 1.5f;
-    private float previousPullRadius = 0;
+    public float Mass { get => _mass; set => _mass = value; }
+
+    public float PullRadius { get => _pullRadius; set => _pullRadius = value; }
 
     // Start is called before the first frame update
     void Start()
     {
         Active = true;
-        GravityConstant = (float) (6.67 * Math.Pow(10, -11));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Math.Abs(pullRadius - previousPullRadius) > 0.01)
+        if (Math.Abs(_pullRadius - _previousPullRadius) > 0.01)
         {
             UpdatePullRadius();
         }
 
-        previousPullRadius = pullRadius;
+        _previousPullRadius = _pullRadius;
+    }
+
+    public Vector3 CalculateGravityPull(Vector3 position, float mass)
+    {
+        //get Distance
+        float distance = Vector3.Distance(position, transform.position);
+        if (distance > PullRadius)
+            return Vector3.zero;
+        float distanceSq = distance * distance;
+
+        //calculate gravitational force (F=G*m1*m2/r^2)
+        float force = _gravityConstant * mass * Mass / distanceSq;
+
+        Vector3 heading = (transform.position - position);
+        //scale force by weight
+        Vector3 forceWithDirection = force * (heading / heading.magnitude);
+
+        return forceWithDirection;
     }
 
     private void UpdatePullRadius()
     {
         var localScale = gameObject.transform.localScale;
-        transform.GetChild(0).transform.localScale = new Vector3(pullRadius, pullRadius, pullRadius) * 2;
+        transform.GetChild(0).transform.localScale = new Vector3(PullRadius, PullRadius, PullRadius) * 2;
     }
 }
