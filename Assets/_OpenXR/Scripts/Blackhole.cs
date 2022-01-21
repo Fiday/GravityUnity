@@ -7,20 +7,26 @@ public class Blackhole : MonoBehaviour
 {
     private float _previousPullRadius = 0;
 
-    private float _gravityConstant = (float)(6.67f * Math.Pow(10, -10));
+    private float _gravityConstant = (float) (6.67f * Math.Pow(10, -10));
 
-    [SerializeField]
-    private float _mass = 10000000000000000;
+    [SerializeField] private float _mass = 10000000000000000;
 
-    [SerializeField]
-    private float _pullRadius = 10f;
+    [SerializeField] private float _pullRadius = 10f;
 
 
     public bool Active { get; set; }
 
-    public float Mass { get => _mass; set => _mass = value; }
+    public float Mass
+    {
+        get => _mass;
+        set => _mass = value;
+    }
 
-    public float PullRadius { get => _pullRadius; set => _pullRadius = value; }
+    public float PullRadius
+    {
+        get => _pullRadius;
+        set => _pullRadius = value;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +37,7 @@ public class Blackhole : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AddForceToAffectedObjects();
         if (Math.Abs(_pullRadius - _previousPullRadius) > 0.01)
         {
             UpdatePullRadius();
@@ -61,5 +68,17 @@ public class Blackhole : MonoBehaviour
     {
         var localScale = gameObject.transform.localScale;
         transform.GetChild(0).transform.localScale = new Vector3(PullRadius, PullRadius, PullRadius) * 2;
+    }
+    
+    private void AddForceToAffectedObjects()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, PullRadius);
+
+        foreach (Collider col in colliders)
+        {
+            var rigidBody = col.gameObject.GetComponent<Rigidbody>();
+            rigidBody.AddForce(CalculateGravityPull(transform.position, rigidBody.mass),
+                ForceMode.Impulse);
+        }
     }
 }

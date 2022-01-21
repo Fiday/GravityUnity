@@ -90,13 +90,13 @@ public class GravityObject : XRGrabInteractable
     // Update is called once per frame
     void FixedUpdate()
     {
-        var blackHoleObject = blackHole.GetComponent<Blackhole>();
+        /*var blackHoleObject = blackHole.GetComponent<Blackhole>();
         if (blackHoleObject.Active)
         {
             var rigidBody = GetComponent<Rigidbody>();
             rigidBody.AddForce(blackHoleObject.CalculateGravityPull(transform.position, rigidBody.mass),
                 ForceMode.Impulse);
-        }
+        }*/
     }
 
     private void ResetPos(InputAction.CallbackContext context)
@@ -122,6 +122,7 @@ public class GravityObject : XRGrabInteractable
     }
 
 
+    /*
     private bool IsControllerActionBased(out ActionBasedController controller)
     {
         controller = null;
@@ -137,40 +138,32 @@ public class GravityObject : XRGrabInteractable
         // Return a bool so we don't need this null-check else where
         return controller != null;
     }
+    */
 
 
     private void ChangeBallSize(InputAction.CallbackContext context)
     {
-        //Debug.Log($"Joystick = {context.ReadValue<Vector2>().y}");
         _currentSize = context.ReadValue<float>();
-        // GetComponent<Rigidbody>().velocity = Vector3.zero;
-        // transform.position = new Vector3(1, 1, -3);
+
     }
 
     private void ChangeBallWeight(InputAction.CallbackContext context)
     {
-        //Debug.Log($"Joystick = {context.ReadValue<Vector2>().y}");
         _currentWeight = context.ReadValue<float>();
-        // GetComponent<Rigidbody>().velocity = Vector3.zero;
-        // transform.position = new Vector3(1, 1, -3);
     }
-
-    private float GetActionValue(InputActionProperty inputAction)
-    {
-        // Read the float value, this can be a more advanced function with generics
-        return inputAction.action.ReadValue<float>();
-    }
-
+    
     private void ApplyScale(float value)
     {
         if (value == 0f) return;
-        var temp = transform.localScale.x;
+        var localScale = transform.localScale;
+        var temp = localScale.x;
 
         temp *= 1 + value / 10f;
         var scale = Mathf.Clamp(temp, MinSize, MaxSize);
 
-        transform.localScale = new Vector3(scale, scale, scale);
-        _trailRenderer.startWidth = transform.localScale.x;
+        localScale = new Vector3(scale, scale, scale);
+        transform.localScale = localScale;
+        _trailRenderer.startWidth = localScale.x;
         _currentSize = 0f;
     }
 
