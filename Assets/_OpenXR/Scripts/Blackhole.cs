@@ -10,10 +10,10 @@ public class Blackhole : MonoBehaviour
     private float _gravityConstant = (float)(6.67f * Math.Pow(10, -10));
 
     [SerializeField]
-    private float _mass = 10000000000000000;
+    private float _mass;
 
     [SerializeField]
-    private float _pullRadius = 10f;
+    private float _pullRadius;
 
     public bool Active { get; set; }
 
