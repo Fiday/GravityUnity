@@ -8,8 +8,6 @@ public class GravityObject : XRGrabInteractable
 {
     private float _currentWeight = 0f;
     private float _currentSize = 0f;
-    private Vector3 _originalScale = new Vector3(0.2f, 0.2f, 0.2f);
-    private GameObject blackHole;
 
     [SerializeField] private float _minSize = 0.03f;
 
@@ -57,7 +55,6 @@ public class GravityObject : XRGrabInteractable
         resetReference.action.canceled += ResetPos;
         ballSizeReference.action.performed += ChangeBallSize;
         ballWeightReference.action.performed += ChangeBallWeight;
-        blackHole = GameObject.FindGameObjectWithTag("BlackHole");
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
         _trailRenderer = GetComponentInChildren<TrailRenderer>();
         _trailRenderer.startWidth = transform.localScale.x;
@@ -173,7 +170,7 @@ public class GravityObject : XRGrabInteractable
         var temp = ri.mass;
 
         temp *= 1 + value / 10f;
-        var scale = Mathf.Clamp(temp, MinWeight, MaxSize);
+        var scale = Mathf.Clamp(temp, MinWeight, MaxWeight);
         GetComponent<Rigidbody>().mass = scale;
         _currentWeight = 0f;
         transform.GetChild(0).GetComponent<TextMeshPro>().text = scale.ToString("0.##");
