@@ -3,58 +3,32 @@ using UnityEngine.InputSystem;
 
 public class AssetInputExample : MonoBehaviour
 {
-    public bool printStuff;
-    public InputActionReference testReference;
     public InputActionReference spawnNewGravityObject;
+    public InputActionReference spawnNewPullyObject;
     public GameObject gravityObjectPrefab;
+    public GameObject pullyObjectPrefab;
 
     private void Start()
     {
-        testReference.action.started += DoPressedThing;
-        testReference.action.performed += DoChangeThing;
-        testReference.action.canceled += DoReleasedThing;
-        spawnNewGravityObject.action.canceled += SpawnNew;
-    }
-
-    private void OnEnable()
-    {
-        testReference.asset.Enable();
-    }
-
-    private void OnDisable()
-    {
-        testReference.asset.Disable();
+        spawnNewGravityObject.action.canceled += SpawnNewGravityObject;
+        spawnNewPullyObject.action.canceled += SpawnNewPullyObject;
     }
 
     private void OnDestroy()
     {
-        testReference.action.started -= DoPressedThing;
-        testReference.action.performed -= DoChangeThing;
-        testReference.action.canceled -= DoReleasedThing;
-        spawnNewGravityObject.action.canceled -= SpawnNew;
+        spawnNewGravityObject.action.canceled -= SpawnNewGravityObject;
+        spawnNewPullyObject.action.canceled -= SpawnNewPullyObject;
     }
 
-    private void DoPressedThing(InputAction.CallbackContext context)
-    {
-        if (printStuff)
-            print("Pressed");
-    }
-
-    private void DoChangeThing(InputAction.CallbackContext context)
-    {
-        if (printStuff)
-            print(context.ReadValue<float>());
-    }
-
-    private void DoReleasedThing(InputAction.CallbackContext context)
-    {
-        if (printStuff)
-            print("Released");
-    }
-
-    private void SpawnNew(InputAction.CallbackContext context)
+    private void SpawnNewGravityObject(InputAction.CallbackContext context)
     {
         GameObject gravityObject = Instantiate(gravityObjectPrefab, transform);
         gravityObject.transform.position = new Vector3(1, 1, -3);
+    }
+    
+    private void SpawnNewPullyObject(InputAction.CallbackContext context)
+    {
+        GameObject pullyObject = Instantiate(pullyObjectPrefab, transform);
+        pullyObject.transform.position = new Vector3(1, 1, -3);
     }
 }

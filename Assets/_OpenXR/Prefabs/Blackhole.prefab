@@ -93,8 +93,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6294585129965210280}
   - component: {fileID: 1862139205440288175}
+  - component: {fileID: 8181328844329887708}
+  - component: {fileID: 1297833954427565497}
   m_Layer: 0
-  m_Name: BlackHole
+  m_Name: Blackhole
   m_TagString: BlackHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,8 +131,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80394453625b7274c83cb3f9795be5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mass: 1e+16
   _pullRadius: 10
+--- !u!114 &8181328844329887708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6490626545144442714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a38d9078a7348f45ba07a00ee231f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1297833954427565497
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6490626545144442714}
+  serializedVersion: 2
+  m_Mass: 100000000
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8015740316087814669
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +172,7 @@ GameObject:
   - component: {fileID: 2835639968470867971}
   - component: {fileID: 3089873893598973956}
   - component: {fileID: 155575517434418277}
+  - component: {fileID: 9175009109973324575}
   m_Layer: 0
   m_Name: Blackpart
   m_TagString: Untagged
@@ -228,3 +258,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9175009109973324575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8015740316087814669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e6f16792214904296a23e98082c968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

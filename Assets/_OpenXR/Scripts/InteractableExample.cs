@@ -6,8 +6,8 @@ public class InteractableExample : XRGrabInteractable
 {
     // Variables
 
-    public Gradient Gradient = null;
-    private MeshRenderer _meshRenderer = null;
+    public Gradient Gradient;
+    private MeshRenderer _meshRenderer;
 
 
     protected override void Awake()
