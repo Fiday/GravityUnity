@@ -6,11 +6,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class GravityObject : XRGrabInteractable
 {
-    private float _currentWeight = 0f;
-    private float _currentSize = 0f;
-    private Vector3 _originalScale = new Vector3(0.2f, 0.2f, 0.2f);
+    private float _currentWeight;
+    private float _currentSize;
     private GameObject blackHole;
-
+    private TrailRenderer _trailRenderer;
+    
     [SerializeField] private float _minSize = 0.03f;
 
     [SerializeField] private float _maxSize = 0.6f;
@@ -19,36 +19,32 @@ public class GravityObject : XRGrabInteractable
 
     [SerializeField] private float _maxWeight = 150f;
 
+    [SerializeField] private Vector3 _spawnPoint = new (1, 1, -3);
     public float MinSize
     {
         get => _minSize;
-        set => _minSize = value;
     }
 
     public float MaxSize
     {
         get => _maxSize;
-        set => _maxSize = value;
     }
 
     public float MinWeight
     {
         get => _minWeight;
-        set => _minWeight = value;
     }
 
     public float MaxWeight
     {
         get => _maxWeight;
-        set => _maxWeight = value;
     }
 
-    public InputActionReference resetReference = null;
-    public InputActionReference ballSizeReference = null;
-    public InputActionReference ballWeightReference = null;
+    public Vector3 SpawnPoint { get => _spawnPoint; }
 
-    private MeshRenderer _meshRenderer = null;
-    private TrailRenderer _trailRenderer = null;
+    public InputActionReference resetReference;
+    public InputActionReference ballSizeReference;
+    public InputActionReference ballWeightReference;
 
     protected override void Awake()
     {
@@ -58,12 +54,10 @@ public class GravityObject : XRGrabInteractable
         ballSizeReference.action.performed += ChangeBallSize;
         ballWeightReference.action.performed += ChangeBallWeight;
         blackHole = GameObject.FindGameObjectWithTag("BlackHole");
-        _meshRenderer = GetComponentInChildren<MeshRenderer>();
         _trailRenderer = GetComponentInChildren<TrailRenderer>();
         _trailRenderer.startWidth = transform.localScale.x;
         
         transform.GetChild(0).GetComponent<TextMeshPro>().text = GetComponent<Rigidbody>().mass.ToString("0.##");
-
     }
 
     protected override void OnDestroy()
@@ -71,8 +65,7 @@ public class GravityObject : XRGrabInteractable
         resetReference.action.canceled -= ResetPos;
         ballSizeReference.action.performed -= ChangeBallSize;
         ballWeightReference.action.performed -= ChangeBallWeight;
-
-
+        
         base.OnDestroy();
     }
 
@@ -102,7 +95,7 @@ public class GravityObject : XRGrabInteractable
     private void ResetPos(InputAction.CallbackContext context)
     {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
-        transform.position = new Vector3(1, 1, -3);
+        transform.position = _spawnPoint;
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -121,44 +114,14 @@ public class GravityObject : XRGrabInteractable
         }
     }
 
-
-    private bool IsControllerActionBased(out ActionBasedController controller)
-    {
-        controller = null;
-
-        // Needs to at least be a Base Controller Interactor
-        if (selectingInteractor is XRBaseControllerInteractor interactor)
-        {
-            // Make sure that Controller is Action-Based
-            if (interactor.xrController is ActionBasedController actionBasedController)
-                controller = actionBasedController;
-        }
-
-        // Return a bool so we don't need this null-check else where
-        return controller != null;
-    }
-
-
     private void ChangeBallSize(InputAction.CallbackContext context)
     {
-        //Debug.Log($"Joystick = {context.ReadValue<Vector2>().y}");
         _currentSize = context.ReadValue<float>();
-        // GetComponent<Rigidbody>().velocity = Vector3.zero;
-        // transform.position = new Vector3(1, 1, -3);
     }
 
     private void ChangeBallWeight(InputAction.CallbackContext context)
     {
-        //Debug.Log($"Joystick = {context.ReadValue<Vector2>().y}");
         _currentWeight = context.ReadValue<float>();
-        // GetComponent<Rigidbody>().velocity = Vector3.zero;
-        // transform.position = new Vector3(1, 1, -3);
-    }
-
-    private float GetActionValue(InputActionProperty inputAction)
-    {
-        // Read the float value, this can be a more advanced function with generics
-        return inputAction.action.ReadValue<float>();
     }
 
     private void ApplyScale(float value)
@@ -170,20 +133,26 @@ public class GravityObject : XRGrabInteractable
         var scale = Mathf.Clamp(temp, MinSize, MaxSize);
 
         transform.localScale = new Vector3(scale, scale, scale);
-        _trailRenderer.startWidth = transform.localScale.x;
+        _trailRenderer.startWidth = scale;
         _currentSize = 0f;
     }
 
     private void ApplyWeightScale(float value)
     {
-        if (value == 0) return;
+        if (value == 0f) return;
         Rigidbody ri = GetComponent<Rigidbody>();
         var temp = ri.mass;
 
         temp *= 1 + value / 10f;
-        var scale = Mathf.Clamp(temp, MinWeight, MaxSize);
-        GetComponent<Rigidbody>().mass = scale;
+        ri.mass = Mathf.Clamp(temp, MinWeight, MaxWeight);
         _currentWeight = 0f;
-        transform.GetChild(0).GetComponent<TextMeshPro>().text = scale.ToString("0.##");
+        transform.GetChild(0).GetComponent<TextMeshPro>().text = ri.mass.ToString("0.##");
+    }
+
+    protected override void SetupRigidbodyGrab(Rigidbody rigidbody)
+    {
+        Debug.Log($"Rotation: {rigidbody.rotation}");
+        base.SetupRigidbodyGrab(rigidbody);
+        transform.localRotation = new Quaternion(90, 70, 0, 1);
     }
 }

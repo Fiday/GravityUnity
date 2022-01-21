@@ -15,7 +15,6 @@ public class Blackhole : MonoBehaviour
     [SerializeField]
     private float _pullRadius = 10f;
 
-
     public bool Active { get; set; }
 
     public float Mass { get => _mass; set => _mass = value; }

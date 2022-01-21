@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 public class AssetInputExample : MonoBehaviour
 {
-    public bool printStuff = false;
-    public InputActionReference testReference = null;
-    public InputActionReference spawnNewGravityObject = null;
+    public bool printStuff;
+    public InputActionReference testReference;
+    public InputActionReference spawnNewGravityObject;
     public GameObject gravityObjectPrefab;
 
     private void Start()
