@@ -71,8 +71,7 @@ public class GravityObject : XRGrabInteractable
         resetReference.action.canceled -= ResetPos;
         ballSizeReference.action.performed -= ChangeBallSize;
         ballWeightReference.action.performed -= ChangeBallWeight;
-
-
+        
         base.OnDestroy();
     }
 

@@ -1,31 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Blackhole : MonoBehaviour
 {
     private float _previousPullRadius = 0;
 
-    private float _gravityConstant = (float) (6.67f * Math.Pow(10, -10));
+    private float _gravityConstant = (float) (6.67f * Math.Pow(10, -11));
 
     [SerializeField] private float _mass = 10000000000000000;
 
     [SerializeField] private float _pullRadius = 10f;
-
-
     public bool Active { get; set; }
 
     public float Mass
     {
         get => _mass;
-        set => _mass = value;
     }
 
     public float PullRadius
     {
         get => _pullRadius;
-        set => _pullRadius = value;
     }
 
     // Start is called before the first frame update
@@ -50,34 +47,34 @@ public class Blackhole : MonoBehaviour
     {
         //get Distance
         float distance = Vector3.Distance(position, transform.position);
-        if (distance > PullRadius)
-            return Vector3.zero;
+        // if (distance > PullRadius)
+        //     return Vector3.zero;
         float distanceSq = distance * distance;
 
         //calculate gravitational force (F=G*m1*m2/r^2)
         float force = _gravityConstant * mass * Mass / distanceSq;
 
-        Vector3 heading = (transform.position - position);
+        Vector3 heading = transform.position - position;
         //scale force by weight
         Vector3 forceWithDirection = force * (heading / heading.magnitude);
 
-        return forceWithDirection;
+        return forceWithDirection * Time.deltaTime;
     }
 
     private void UpdatePullRadius()
     {
-        var localScale = gameObject.transform.localScale;
         transform.GetChild(0).transform.localScale = new Vector3(PullRadius, PullRadius, PullRadius) * 2;
     }
-    
+
     private void AddForceToAffectedObjects()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, PullRadius);
+        var colliders = Physics.OverlapSphere(transform.position, PullRadius)
+            .Where(c => c.gameObject.tag.Equals("Gravity"));
 
         foreach (Collider col in colliders)
         {
             var rigidBody = col.gameObject.GetComponent<Rigidbody>();
-            rigidBody.AddForce(CalculateGravityPull(transform.position, rigidBody.mass),
+            rigidBody.AddForce(CalculateGravityPull(rigidBody.transform.position, rigidBody.mass),
                 ForceMode.Impulse);
         }
     }
