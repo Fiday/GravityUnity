@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -10,22 +11,37 @@ public class GravityObject : XRGrabInteractable
     private Vector3 _originalScale = new Vector3(0.2f, 0.2f, 0.2f);
     private GameObject blackHole;
 
-    [SerializeField]
-    private float _minSize = 0.03f;
-    
-    [SerializeField]
-    private float _maxSize = 0.6f;
-    
-    [SerializeField]
-    private float _minWeight = 0.1f;
-    
-    [SerializeField]
-    private float _maxWeight = 150f;
+    [SerializeField] private float _minSize = 0.03f;
 
-    public float MinSize { get => _minSize; set => _minSize = value; }
-    public float MaxSize { get => _maxSize; set => _maxSize = value; }
-    public float MinWeight { get => _minWeight; set => _minWeight = value; }
-    public float MaxWeight { get => _maxWeight; set => _maxWeight = value; }
+    [SerializeField] private float _maxSize = 0.6f;
+
+    [SerializeField] private float _minWeight = 0.1f;
+
+    [SerializeField] private float _maxWeight = 150f;
+
+    public float MinSize
+    {
+        get => _minSize;
+        set => _minSize = value;
+    }
+
+    public float MaxSize
+    {
+        get => _maxSize;
+        set => _maxSize = value;
+    }
+
+    public float MinWeight
+    {
+        get => _minWeight;
+        set => _minWeight = value;
+    }
+
+    public float MaxWeight
+    {
+        get => _maxWeight;
+        set => _maxWeight = value;
+    }
 
     public InputActionReference resetReference = null;
     public InputActionReference ballSizeReference = null;
@@ -45,6 +61,9 @@ public class GravityObject : XRGrabInteractable
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
         _trailRenderer = GetComponentInChildren<TrailRenderer>();
         _trailRenderer.startWidth = transform.localScale.x;
+        
+        transform.GetChild(0).GetComponent<TextMeshPro>().text = GetComponent<Rigidbody>().mass.ToString("0.##");
+
     }
 
     protected override void OnDestroy()
@@ -75,10 +94,11 @@ public class GravityObject : XRGrabInteractable
         if (blackHoleObject.Active)
         {
             var rigidBody = GetComponent<Rigidbody>();
-            rigidBody.AddForce(blackHoleObject.CalculateGravityPull(transform.position, rigidBody.mass), ForceMode.Impulse);
+            rigidBody.AddForce(blackHoleObject.CalculateGravityPull(transform.position, rigidBody.mass),
+                ForceMode.Impulse);
         }
     }
-    
+
     private void ResetPos(InputAction.CallbackContext context)
     {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -134,7 +154,7 @@ public class GravityObject : XRGrabInteractable
         // GetComponent<Rigidbody>().velocity = Vector3.zero;
         // transform.position = new Vector3(1, 1, -3);
     }
-    
+
     private float GetActionValue(InputActionProperty inputAction)
     {
         // Read the float value, this can be a more advanced function with generics
@@ -164,5 +184,6 @@ public class GravityObject : XRGrabInteractable
         var scale = Mathf.Clamp(temp, MinWeight, MaxSize);
         GetComponent<Rigidbody>().mass = scale;
         _currentWeight = 0f;
+        transform.GetChild(0).GetComponent<TextMeshPro>().text = scale.ToString("0.##");
     }
 }
