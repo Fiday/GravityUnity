@@ -129,7 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80394453625b7274c83cb3f9795be5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullRadius: 3
+  _mass: 1e+16
+  _pullRadius: 10
 --- !u!1 &8015740316087814669
 GameObject:
   m_ObjectHideFlags: 0

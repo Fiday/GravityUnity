@@ -53,7 +53,6 @@ public class GravityObject : XRGrabInteractable
         resetReference.action.canceled += ResetPos;
         ballSizeReference.action.performed += ChangeBallSize;
         ballWeightReference.action.performed += ChangeBallWeight;
-        blackHole = GameObject.FindGameObjectWithTag("BlackHole");
         _trailRenderer = GetComponentInChildren<TrailRenderer>();
         _trailRenderer.startWidth = transform.localScale.x;
         
@@ -83,13 +82,7 @@ public class GravityObject : XRGrabInteractable
     // Update is called once per frame
     void FixedUpdate()
     {
-        var blackHoleObject = blackHole.GetComponent<Blackhole>();
-        if (blackHoleObject.Active)
-        {
-            var rigidBody = GetComponent<Rigidbody>();
-            rigidBody.AddForce(blackHoleObject.CalculateGravityPull(transform.position, rigidBody.mass),
-                ForceMode.Impulse);
-        }
+
     }
 
     private void ResetPos(InputAction.CallbackContext context)
@@ -123,7 +116,7 @@ public class GravityObject : XRGrabInteractable
     {
         _currentWeight = context.ReadValue<float>();
     }
-
+    
     private void ApplyScale(float value)
     {
         if (value == 0f) return;
