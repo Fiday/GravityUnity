@@ -728,6 +728,17 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fec1c825-a154-4c17-8aa4-45b6fa823112"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spawn new"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4a4605be-4725-434d-9a4f-6f793083edfa"",
                     ""path"": ""<ValveIndexController>{RightHand}/thumbstick/y"",
                     ""interactions"": """",

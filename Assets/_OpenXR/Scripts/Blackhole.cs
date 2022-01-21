@@ -13,7 +13,7 @@ public class Blackhole : MonoBehaviour
     private float _mass = 10000000000000000;
 
     [SerializeField]
-    private float _pullRadius = 1.5f;
+    private float _pullRadius = 10f;
 
 
     public bool Active { get; set; }
