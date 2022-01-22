@@ -701,6 +701,15 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SpawnWithVelocityAndPos"",
+                    ""type"": ""Button"",
+                    ""id"": ""27bd1642-adb6-47f5-ad34-5ff28121d081"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -756,6 +765,17 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeWeigth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4718937a-ef0f-497e-88d4-7013d1d43cef"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnWithVelocityAndPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -863,6 +883,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_Custom_Spawnnew = m_Custom.FindAction("Spawn new", throwIfNotFound: true);
         m_Custom_ChangeSize = m_Custom.FindAction("ChangeSize", throwIfNotFound: true);
         m_Custom_ChangeWeigth = m_Custom.FindAction("ChangeWeigth", throwIfNotFound: true);
+        m_Custom_SpawnWithVelocityAndPos = m_Custom.FindAction("SpawnWithVelocityAndPos", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1225,6 +1246,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     private readonly InputAction m_Custom_Spawnnew;
     private readonly InputAction m_Custom_ChangeSize;
     private readonly InputAction m_Custom_ChangeWeigth;
+    private readonly InputAction m_Custom_SpawnWithVelocityAndPos;
     public struct CustomActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -1233,6 +1255,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         public InputAction @Spawnnew => m_Wrapper.m_Custom_Spawnnew;
         public InputAction @ChangeSize => m_Wrapper.m_Custom_ChangeSize;
         public InputAction @ChangeWeigth => m_Wrapper.m_Custom_ChangeWeigth;
+        public InputAction @SpawnWithVelocityAndPos => m_Wrapper.m_Custom_SpawnWithVelocityAndPos;
         public InputActionMap Get() { return m_Wrapper.m_Custom; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1254,6 +1277,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @ChangeWeigth.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnChangeWeigth;
                 @ChangeWeigth.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnChangeWeigth;
                 @ChangeWeigth.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnChangeWeigth;
+                @SpawnWithVelocityAndPos.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnWithVelocityAndPos;
+                @SpawnWithVelocityAndPos.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnWithVelocityAndPos;
+                @SpawnWithVelocityAndPos.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnWithVelocityAndPos;
             }
             m_Wrapper.m_CustomActionsCallbackInterface = instance;
             if (instance != null)
@@ -1270,6 +1296,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @ChangeWeigth.started += instance.OnChangeWeigth;
                 @ChangeWeigth.performed += instance.OnChangeWeigth;
                 @ChangeWeigth.canceled += instance.OnChangeWeigth;
+                @SpawnWithVelocityAndPos.started += instance.OnSpawnWithVelocityAndPos;
+                @SpawnWithVelocityAndPos.performed += instance.OnSpawnWithVelocityAndPos;
+                @SpawnWithVelocityAndPos.canceled += instance.OnSpawnWithVelocityAndPos;
             }
         }
     }
@@ -1344,5 +1373,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         void OnSpawnnew(InputAction.CallbackContext context);
         void OnChangeSize(InputAction.CallbackContext context);
         void OnChangeWeigth(InputAction.CallbackContext context);
+        void OnSpawnWithVelocityAndPos(InputAction.CallbackContext context);
     }
 }

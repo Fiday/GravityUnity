@@ -1,26 +1,29 @@
 using System;
 using System.Linq;
+using _OpenXR.Scripts;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class AttractionComponent : MonoBehaviour
 {
-
-    private float _gravityConstant = (float) (6.67f * Math.Pow(10, -9));
-
+    
     [SerializeField] 
     private float _pullRadius;
-    public bool Active { get; set; }
-
     public float PullRadius
     {
         get => _pullRadius;
+    }
+    
+    [SerializeField] 
+    private float _mass;
+    public float Mass
+    {
+        get => _mass;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Active = true;
     }
 
     // Update is called once per frame
@@ -38,7 +41,7 @@ public class AttractionComponent : MonoBehaviour
         float distanceSq = distance * distance;
 
         //calculate gravitational force (F=G*m1*m2/r^2)
-        float force = _gravityConstant * mass * GetComponent<Rigidbody>().mass / distanceSq;
+        float force = Gravity.GravityConstant * mass * (Mass / distanceSq);
 
         Vector3 heading = currPosition - position;
         //scale force by weight

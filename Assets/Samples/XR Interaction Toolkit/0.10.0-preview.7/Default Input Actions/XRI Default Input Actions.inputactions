@@ -679,6 +679,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SpawnWithVelocityAndPos",
+                    "type": "Button",
+                    "id": "27bd1642-adb6-47f5-ad34-5ff28121d081",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -734,6 +743,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangeWeigth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4718937a-ef0f-497e-88d4-7013d1d43cef",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnWithVelocityAndPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
