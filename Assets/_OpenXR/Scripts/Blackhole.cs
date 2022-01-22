@@ -6,7 +6,7 @@ public class Blackhole : MonoBehaviour
     private float _currPullRadius;
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
         var scale = GetComponent<AttractionComponent>().PullRadius*2;
         if (Math.Abs(scale - _currPullRadius) > 0.01)
