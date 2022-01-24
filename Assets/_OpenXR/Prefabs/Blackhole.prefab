@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attracts: 1
   _pullRadius: 20
-  _mass: 1e+10
+  _mass: 5e+10
 --- !u!114 &2167144738579287091
 MonoBehaviour:
   m_ObjectHideFlags: 0

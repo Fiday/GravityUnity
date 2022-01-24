@@ -33,6 +33,7 @@ public class InputControl : XRGrabInteractable
     protected override void Awake()
     {
         base.Awake();
+        _outOfBounds = GameObject.Find("Blackhole").GetComponent<AttractionComponent>().PullRadius;
         _ballSizeReference.action.performed += ChangeBallSize;
         _ballWeightReference.action.performed += ChangeBallWeight;
         _trailRenderer = GetComponent<TrailRenderer>();

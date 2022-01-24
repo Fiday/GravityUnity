@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attracts: 0
   _pullRadius: 0
-  _mass: 10
+  _mass: 50
 --- !u!114 &-8509879455734871133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,8 +306,8 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   _minSize: 0.03
   _maxSize: 0.6
-  _minWeight: 0.1
-  _maxWeight: 150
+  _minWeight: 1
+  _maxWeight: 1000
   _outOfBounds: 20
   _ballSizeReference: {fileID: 6541807806881504541, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}

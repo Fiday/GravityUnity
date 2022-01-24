@@ -23,10 +23,18 @@ public class AttractionComponent : MonoBehaviour
         set => _mass = value;
     }
 
+    private void Start()
+    {
+        if (TryGetComponent(out Rigidbody rigidbody))
+        {
+            rigidbody.mass = Mass;
+        }
+    }
+
 
     void Update()
     {
-        if(attracts)
+        if (attracts)
             AddForceToAffectedObjects();
     }
 

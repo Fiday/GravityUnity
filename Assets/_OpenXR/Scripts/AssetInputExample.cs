@@ -9,7 +9,7 @@ public class AssetInputExample : MonoBehaviour
     public InputActionReference spawnNewWithVelocityGravityObject;
     public GameObject gravityObjectPrefab;
     public GameObject pullyObjectPrefab;
-    private Vector3 _spawnPoint = new Vector3(1, 1, -3);
+    public Vector3 spawnOffset = new Vector3(0.2f, -0.4f, 0.3f);
 
     private void Start()
     {
@@ -28,13 +28,13 @@ public class AssetInputExample : MonoBehaviour
     private void SpawnNewGravityObject(InputAction.CallbackContext context)
     {
         GameObject gravityObject = Instantiate(gravityObjectPrefab, transform);
-        gravityObject.transform.position = _spawnPoint;
+        gravityObject.transform.position = GameObject.Find("Main Camera").transform.position + spawnOffset ;
     }
 
     private void SpawnNewPullyObject(InputAction.CallbackContext context)
     {
         GameObject pullyObject = Instantiate(pullyObjectPrefab, transform);
-        pullyObject.transform.position = _spawnPoint;
+        pullyObject.transform.position = GameObject.Find("Main Camera").transform.position + spawnOffset;;
     }
 
     private void SpawnNewWithVelocityGravityObject(InputAction.CallbackContext context)
