@@ -38,7 +38,7 @@ public class AttractionComponent : MonoBehaviour
         float distanceSq = distance * distance;
 
         //calculate gravitational force (F=G*m1*m2/r^2)
-        float force = Gravity.GravityConstant * mass * Mass / distanceSq;
+        float force = Gravity.GravityConstant * ((mass * Mass) / distanceSq);
 
         Vector3 heading = currPosition - position;
         //scale force by weight
