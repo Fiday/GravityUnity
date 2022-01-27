@@ -667,7 +667,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
             ""id"": ""dec0ca55-c65a-4f4f-b72f-6a56ab393416"",
             ""actions"": [
                 {
-                    ""name"": ""Spawn pully"",
+                    ""name"": ""Toggle Attraction"",
                     ""type"": ""Button"",
                     ""id"": ""3ead8b67-2897-4596-81e6-6139bdacf606"",
                     ""expectedControlType"": ""Button"",
@@ -720,7 +720,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Spawn pully"",
+                    ""action"": ""Toggle Attraction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -879,7 +879,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRIRightHand_TranslateAnchor = m_XRIRightHand.FindAction("Translate Anchor", throwIfNotFound: true);
         // Custom
         m_Custom = asset.FindActionMap("Custom", throwIfNotFound: true);
-        m_Custom_Spawnpully = m_Custom.FindAction("Spawn pully", throwIfNotFound: true);
+        m_Custom_ToggleAttraction = m_Custom.FindAction("Toggle Attraction", throwIfNotFound: true);
         m_Custom_Spawnnew = m_Custom.FindAction("Spawn new", throwIfNotFound: true);
         m_Custom_ChangeSize = m_Custom.FindAction("ChangeSize", throwIfNotFound: true);
         m_Custom_ChangeWeigth = m_Custom.FindAction("ChangeWeigth", throwIfNotFound: true);
@@ -1242,7 +1242,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     // Custom
     private readonly InputActionMap m_Custom;
     private ICustomActions m_CustomActionsCallbackInterface;
-    private readonly InputAction m_Custom_Spawnpully;
+    private readonly InputAction m_Custom_ToggleAttraction;
     private readonly InputAction m_Custom_Spawnnew;
     private readonly InputAction m_Custom_ChangeSize;
     private readonly InputAction m_Custom_ChangeWeigth;
@@ -1251,7 +1251,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     {
         private @XRIDefaultInputActions m_Wrapper;
         public CustomActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Spawnpully => m_Wrapper.m_Custom_Spawnpully;
+        public InputAction @ToggleAttraction => m_Wrapper.m_Custom_ToggleAttraction;
         public InputAction @Spawnnew => m_Wrapper.m_Custom_Spawnnew;
         public InputAction @ChangeSize => m_Wrapper.m_Custom_ChangeSize;
         public InputAction @ChangeWeigth => m_Wrapper.m_Custom_ChangeWeigth;
@@ -1265,9 +1265,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         {
             if (m_Wrapper.m_CustomActionsCallbackInterface != null)
             {
-                @Spawnpully.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnpully;
-                @Spawnpully.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnpully;
-                @Spawnpully.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnpully;
+                @ToggleAttraction.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnToggleAttraction;
+                @ToggleAttraction.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnToggleAttraction;
+                @ToggleAttraction.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnToggleAttraction;
                 @Spawnnew.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnnew;
                 @Spawnnew.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnnew;
                 @Spawnnew.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnnew;
@@ -1284,9 +1284,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
             m_Wrapper.m_CustomActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Spawnpully.started += instance.OnSpawnpully;
-                @Spawnpully.performed += instance.OnSpawnpully;
-                @Spawnpully.canceled += instance.OnSpawnpully;
+                @ToggleAttraction.started += instance.OnToggleAttraction;
+                @ToggleAttraction.performed += instance.OnToggleAttraction;
+                @ToggleAttraction.canceled += instance.OnToggleAttraction;
                 @Spawnnew.started += instance.OnSpawnnew;
                 @Spawnnew.performed += instance.OnSpawnnew;
                 @Spawnnew.canceled += instance.OnSpawnnew;
@@ -1369,7 +1369,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     }
     public interface ICustomActions
     {
-        void OnSpawnpully(InputAction.CallbackContext context);
+        void OnToggleAttraction(InputAction.CallbackContext context);
         void OnSpawnnew(InputAction.CallbackContext context);
         void OnChangeSize(InputAction.CallbackContext context);
         void OnChangeWeigth(InputAction.CallbackContext context);

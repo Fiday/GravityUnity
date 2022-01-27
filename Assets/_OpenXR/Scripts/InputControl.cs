@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Scripting;
 using UnityEngine.XR.Interaction.Toolkit;
 
 
@@ -25,17 +26,24 @@ public class InputControl : XRGrabInteractable
     [SerializeField] private float _maxWeight;
 
     [SerializeField] private float _outOfBounds = 20;
-    
+
     [SerializeField] private InputActionReference _ballSizeReference;
-    
+
     [SerializeField] private InputActionReference _ballWeightReference;
+
+    [SerializeField] private InputActionReference toggleAttraction;
+
+    [SerializeField] private  Material sunMaterial;
+    [SerializeField] private Material planetMaterial;
 
     protected override void Awake()
     {
         base.Awake();
-        _outOfBounds = GameObject.Find("Blackhole").GetComponent<AttractionComponent>().PullRadius;
+        _outOfBounds = GameObject.FindWithTag("Blackhole").GetComponent<AttractionComponent>().PullRadius;
         _ballSizeReference.action.performed += ChangeBallSize;
         _ballWeightReference.action.performed += ChangeBallWeight;
+        toggleAttraction.action.canceled += ToggleAttraction;
+
         _trailRenderer = GetComponent<TrailRenderer>();
         UpdateTrail();
     }
@@ -50,8 +58,20 @@ public class InputControl : XRGrabInteractable
     {
         _ballSizeReference.action.performed -= ChangeBallSize;
         _ballWeightReference.action.performed -= ChangeBallWeight;
+        toggleAttraction.action.canceled -= ToggleAttraction;
 
         base.OnDestroy();
+    }
+
+    private void ToggleAttraction(InputAction.CallbackContext obj)
+    {
+        if (isSelected)
+        {
+            var atc = GetComponent<AttractionComponent>();
+            atc.Attracts = !atc.Attracts;
+            transform.GetChild(1).GetComponent<MeshRenderer>().material =
+                atc.Attracts ? sunMaterial : planetMaterial;
+        }
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -113,6 +133,7 @@ public class InputControl : XRGrabInteractable
 
         temp *= 1 + value / 10f;
         attractionComp.Mass = Mathf.Clamp(temp, _minWeight, _maxWeight);
+        GetComponent<Rigidbody>().mass = attractionComp.Mass;
         _currentWeight = 0f;
     }
 

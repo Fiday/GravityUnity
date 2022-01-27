@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 14960
-  size: 127.5
+  orbitRadius: 149.6
+  size: 12.756
 --- !u!1 &218281206
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 6903561557396303437, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Gravity
       objectReference: {fileID: 0}
     - target: {fileID: 7496799347474010037, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -682,8 +682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 75
-  size: 10
+  orbitRadius: 2870.99
+  size: 51.118
 --- !u!1001 &405791559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -779,7 +779,7 @@ PrefabInstance:
     - target: {fileID: 6903561557396303437, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Gravity
       objectReference: {fileID: 0}
     - target: {fileID: 7496799347474010037, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -821,8 +821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 75
-  size: 10
+  orbitRadius: 778.33
+  size: 142.984
 --- !u!1001 &503915441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1168,7 +1168,7 @@ PrefabInstance:
     - target: {fileID: 6903561557396303437, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Gravity
       objectReference: {fileID: 0}
     - target: {fileID: 7496799347474010037, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -1210,8 +1210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 75
-  size: 10
+  orbitRadius: 108.2
+  size: 12.104
 --- !u!1001 &635775386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1795,7 +1795,7 @@ PrefabInstance:
     - target: {fileID: 6903561557396303437, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Gravity
       objectReference: {fileID: 0}
     - target: {fileID: 7496799347474010037, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -1837,8 +1837,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 75
-  size: 10
+  orbitRadius: 227.94
+  size: 6.794
 --- !u!1001 &1125942123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1934,7 +1934,7 @@ PrefabInstance:
     - target: {fileID: 6903561557396303437, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Gravity
       objectReference: {fileID: 0}
     - target: {fileID: 7496799347474010037, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -1976,8 +1976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 75
-  size: 10
+  orbitRadius: 4504
+  size: 49.532
 --- !u!1 &1202140159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,7 +2258,7 @@ PrefabInstance:
     - target: {fileID: 6335478059534950820, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
       propertyPath: _mass
-      value: 1.989e+30
+      value: 1.989e+16
       objectReference: {fileID: 0}
     - target: {fileID: 6335478059534950820, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
@@ -2268,12 +2268,12 @@ PrefabInstance:
     - target: {fileID: 6335478059534950820, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
       propertyPath: _pullRadius
-      value: 500000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 6490626545144442714, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
       propertyPath: m_Name
-      value: Blackhole
+      value: Sun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2033db0a590a704479033e4f69730b67, type: 3}
@@ -2403,7 +2403,7 @@ PrefabInstance:
     - target: {fileID: 6903561557396303437, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Gravity
       objectReference: {fileID: 0}
     - target: {fileID: 7496799347474010037, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -2445,7 +2445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 579.1
+  orbitRadius: 57.91
   size: 4.88
 --- !u!1001 &1518724023
 PrefabInstance:
@@ -2542,7 +2542,7 @@ PrefabInstance:
     - target: {fileID: 6903561557396303437, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Gravity
       objectReference: {fileID: 0}
     - target: {fileID: 7496799347474010037, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -2584,8 +2584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 75
-  size: 10
+  orbitRadius: 1429.4
+  size: 120.536
 --- !u!1 &1826404399
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,7 +2815,7 @@ PrefabInstance:
     - target: {fileID: 6903561557396303437, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Gravity
       objectReference: {fileID: 0}
     - target: {fileID: 7496799347474010037, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}

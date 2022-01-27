@@ -645,7 +645,7 @@
             "id": "dec0ca55-c65a-4f4f-b72f-6a56ab393416",
             "actions": [
                 {
-                    "name": "Spawn pully",
+                    "name": "Toggle Attraction",
                     "type": "Button",
                     "id": "3ead8b67-2897-4596-81e6-6139bdacf606",
                     "expectedControlType": "Button",
@@ -698,7 +698,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Spawn pully",
+                    "action": "Toggle Attraction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -14,7 +14,7 @@ namespace _OpenXR.Scripts
             transform.position = new Vector3(0f, 0f, -orbitRadius);
             transform.localScale = new Vector3(size, size, size);
 
-            GameObject blackhole = GameObject.Find("Blackhole");
+            GameObject blackhole = GameObject.FindWithTag("Blackhole");
             GetComponent<Rigidbody>().velocity = new Vector3(
                 Gravity.OrbitVelocity(blackhole.GetComponent<AttractionComponent>().Mass, orbitRadius), 0, 0);
         }

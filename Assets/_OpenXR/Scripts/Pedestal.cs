@@ -15,7 +15,7 @@ namespace _OpenXR.Scripts
         {
             var position = transform.position;
             Vector3 startingPos = position;
-            Vector3 finalPos = position + new Vector3(0f, 89.99f, 0f);
+            Vector3 finalPos = position + new Vector3(0f, 90f, 0f);
             float elapsedTime = 0;
 
             while (elapsedTime < time)

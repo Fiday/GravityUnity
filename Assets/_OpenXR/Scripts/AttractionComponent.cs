@@ -8,6 +8,11 @@ public class AttractionComponent : MonoBehaviour
 {
     [SerializeField] private bool attracts;
 
+    public bool Attracts
+    {
+        get => attracts;
+        set => attracts = value;
+    }
     [SerializeField] private float _pullRadius;
 
     public float PullRadius
@@ -46,7 +51,7 @@ public class AttractionComponent : MonoBehaviour
         float distanceSq = distance * distance;
 
         //calculate gravitational force (F=G*m1*m2/r^2)
-        float force = Gravity.GravityConstant * ((mass * Mass) / distanceSq);
+        float force = Gravity.GravityConstant * (Mass * mass  / distanceSq);
 
         Vector3 heading = currPosition - position;
         //scale force by weight
