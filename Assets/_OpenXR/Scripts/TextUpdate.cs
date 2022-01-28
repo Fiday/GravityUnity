@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class TextUpdate : MonoBehaviour
 {
-    /*
+    
     private float previousValue;
 
     private TextMeshPro textmeshMass;
@@ -19,18 +19,19 @@ public class TextUpdate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // textmeshMass = GameObject.Find("ValueMass").GetComponent<TextMeshPro>();
-        // attractionComponent = GameObject.FindWithTag("Blackhole").GetComponent<AttractionComponent>();
-        // textmeshMass.text = attractionComponent.Mass.ToString("0.#e+0");
-        _sliderScript = GetComponentInChildren<SliderScript>();
+        textmeshMass = GameObject.Find("ValueMass").GetComponent<TextMeshPro>();
+        attractionComponent = GameObject.FindWithTag("Blackhole").GetComponent<AttractionComponent>();
+        textmeshMass.text = attractionComponent.Mass.ToString("0.#e+0");
+        
+        /*_sliderScript = GetComponentInChildren<SliderScript>();
         _sliderScript.SetCurrentValue(GetScaledValue(attractionComponent.Mass, attractionComponent.MinWeight,
             attractionComponent.MaxWeight, 0, 1));
-        previousValue = _sliderScript.GetCurrentValue();
+        previousValue = _sliderScript.GetCurrentValue();*/
     }
 
     void Update()
     {
-        var currentValue = GameObject.FindGameObjectWithTag("Body").GetComponent<SliderScript>().GetCurrentValue();
+        /*var currentValue = GameObject.FindGameObjectWithTag("Body").GetComponent<SliderScript>().GetCurrentValue();
         Debug.Log($"currentvalue {currentValue}");
         if (Math.Abs(currentValue - previousValue) > 0.01)
         {
@@ -41,15 +42,11 @@ public class TextUpdate : MonoBehaviour
             previousValue = currentValue;
         }
 
-        Debug.Log(attractionComponent.Mass);
+        Debug.Log(attractionComponent.Mass);*/
     }
 
    float GetScaledValue(float x, float min, float max, float newMin, float newMax)
     {
-        /#1#/return (((newMax - newMin) * (x - min)) / (max - min)) + newMin;
-
-        return ((x - min) / (max - min))
-            * (newMax - newMin) + newMin;#1#
-        return 1;
-    }*/
+        return (((newMax - newMin) * (x - min)) / (max - min)) + newMin;
+    }
 }

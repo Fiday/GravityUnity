@@ -710,6 +710,15 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""1325a2ad-8be7-4a61-8426-0f0e8063e434"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -748,17 +757,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4a4605be-4725-434d-9a4f-6f793083edfa"",
-                    ""path"": ""<ValveIndexController>{RightHand}/thumbstick/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSize"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ee4aaaad-81d4-48c6-9859-165704ed6a2b"",
                     ""path"": ""<XRController>{RightHand}/thumbstick/Y"",
                     ""interactions"": """",
@@ -770,19 +768,8 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
-                    ""id"": ""212a326a-64c4-4c89-90cc-d133c4421abe"",
-                    ""path"": ""<ValveIndexController>{LeftHand}/thumbstick/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeWeigth"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ea869202-da3a-4d65-9035-535fa0f8ff6d"",
-                    ""path"": ""<XRController>{LeftHand}/thumbstick"",
+                    ""path"": ""<XRController>{LeftHand}/thumbstick/Y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -809,6 +796,39 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SpawnWithVelocityAndPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9bc93ea4-e26b-47bf-9cd8-25b7e0604a95"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ace952d-5598-4765-b2e4-93fa0d4981f2"",
+                    ""path"": ""<ValveIndexController>{RightHand}/thumbstick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30d88236-60cc-4434-98dc-062d1cdbbed6"",
+                    ""path"": ""<ValveIndexController>{LeftHand}/thumbstick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -917,6 +937,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_Custom_ChangeSize = m_Custom.FindAction("ChangeSize", throwIfNotFound: true);
         m_Custom_ChangeWeigth = m_Custom.FindAction("ChangeWeigth", throwIfNotFound: true);
         m_Custom_SpawnWithVelocityAndPos = m_Custom.FindAction("SpawnWithVelocityAndPos", throwIfNotFound: true);
+        m_Custom_Newaction = m_Custom.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1280,6 +1301,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     private readonly InputAction m_Custom_ChangeSize;
     private readonly InputAction m_Custom_ChangeWeigth;
     private readonly InputAction m_Custom_SpawnWithVelocityAndPos;
+    private readonly InputAction m_Custom_Newaction;
     public struct CustomActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -1289,6 +1311,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         public InputAction @ChangeSize => m_Wrapper.m_Custom_ChangeSize;
         public InputAction @ChangeWeigth => m_Wrapper.m_Custom_ChangeWeigth;
         public InputAction @SpawnWithVelocityAndPos => m_Wrapper.m_Custom_SpawnWithVelocityAndPos;
+        public InputAction @Newaction => m_Wrapper.m_Custom_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Custom; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1313,6 +1336,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @SpawnWithVelocityAndPos.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnWithVelocityAndPos;
                 @SpawnWithVelocityAndPos.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnWithVelocityAndPos;
                 @SpawnWithVelocityAndPos.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnSpawnWithVelocityAndPos;
+                @Newaction.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_CustomActionsCallbackInterface = instance;
             if (instance != null)
@@ -1332,6 +1358,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @SpawnWithVelocityAndPos.started += instance.OnSpawnWithVelocityAndPos;
                 @SpawnWithVelocityAndPos.performed += instance.OnSpawnWithVelocityAndPos;
                 @SpawnWithVelocityAndPos.canceled += instance.OnSpawnWithVelocityAndPos;
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
@@ -1407,5 +1436,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         void OnChangeSize(InputAction.CallbackContext context);
         void OnChangeWeigth(InputAction.CallbackContext context);
         void OnSpawnWithVelocityAndPos(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

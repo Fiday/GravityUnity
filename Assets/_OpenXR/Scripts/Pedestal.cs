@@ -6,16 +6,31 @@ namespace _OpenXR.Scripts
 {
     public class Pedestal : MonoBehaviour
     {
-        public void StartMovement()
+        public void StartMovement(bool up)
         {
-            StartCoroutine(SmoothLerp(0.75f));
+            StartCoroutine(!up ? MoveUpSmoothLerp(0.75f) : MoveDownSmoothLerp(0.75f));
         }
-        
-        private IEnumerator SmoothLerp(float time)
+
+        private IEnumerator MoveUpSmoothLerp(float time)
         {
             var position = transform.position;
             Vector3 startingPos = position;
             Vector3 finalPos = position + new Vector3(0f, 90f, 0f);
+            float elapsedTime = 0;
+
+            while (elapsedTime < time)
+            {
+                transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        private IEnumerator MoveDownSmoothLerp(float time)
+        {
+            var position = transform.position;
+            Vector3 startingPos = position;
+            Vector3 finalPos = position + new Vector3(0f, -90f, 0f);
             float elapsedTime = 0;
 
             while (elapsedTime < time)

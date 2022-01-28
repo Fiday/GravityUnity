@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 6451479938127907766}
   - component: {fileID: 3277480414725995067}
   - component: {fileID: 3096743020291092542}
+  - component: {fileID: 5272596413163182900}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Gravity
@@ -273,6 +274,8 @@ MonoBehaviour:
   attracts: 0
   _pullRadius: 3
   _mass: 1000
+  _minWeight: 0
+  _maxWeight: 0
 --- !u!114 &3096743020291092542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,6 +404,19 @@ MonoBehaviour:
     type: 3}
   sunMaterial: {fileID: 2100000, guid: 084623172ea44c443bdd84e3b4ccdcd6, type: 2}
   planetMaterial: {fileID: 2100000, guid: 9e61b04bcca72f1419dc72a2d801a51d, type: 2}
+--- !u!114 &5272596413163182900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100031323225119536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3960f5ab5d1e4b28abf23056d89f5184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: d1c5a51857464471ab87240e00aa9a06, type: 3}
 --- !u!1 &5361757000871958026
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,16 +13,21 @@ public class RoomFunctions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Lever.transform.eulerAngles = new(40, 0, 0);
+        
     }
     
     void Update()
     {
-        if (IsActive && Math.Abs(Lever.transform.GetChild(0).position.y - 1.2) < 0.01f)
-        {
-            GameObject.Find("Pedestal").GetComponent<Pedestal>().StartMovement();
-            gameObject.SetActive(false);
-            IsActive = false;
-        }
+       /*if (IsActive && Lever.GetComponentInChildren<Lever>().GetCurrentState())
+       {
+   
+       }*/
+    }
+
+    public void ChangeRoomActive(bool b)
+    {
+        GameObject.Find("Pedestal").GetComponent<Pedestal>().StartMovement(b);
+        gameObject.SetActive(b);
+        IsActive = b;
     }
 }

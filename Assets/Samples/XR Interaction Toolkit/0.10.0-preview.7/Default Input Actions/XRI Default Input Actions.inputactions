@@ -688,6 +688,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "1325a2ad-8be7-4a61-8426-0f0e8063e434",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -726,17 +735,6 @@
                 },
                 {
                     "name": "",
-                    "id": "4a4605be-4725-434d-9a4f-6f793083edfa",
-                    "path": "<ValveIndexController>{RightHand}/thumbstick/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeSize",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ee4aaaad-81d4-48c6-9859-165704ed6a2b",
                     "path": "<XRController>{RightHand}/thumbstick/Y",
                     "interactions": "",
@@ -748,19 +746,8 @@
                 },
                 {
                     "name": "",
-                    "id": "212a326a-64c4-4c89-90cc-d133c4421abe",
-                    "path": "<ValveIndexController>{LeftHand}/thumbstick/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeWeigth",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ea869202-da3a-4d65-9035-535fa0f8ff6d",
-                    "path": "<XRController>{LeftHand}/thumbstick",
+                    "path": "<XRController>{LeftHand}/thumbstick/Y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -787,6 +774,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "SpawnWithVelocityAndPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9bc93ea4-e26b-47bf-9cd8-25b7e0604a95",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ace952d-5598-4765-b2e4-93fa0d4981f2",
+                    "path": "<ValveIndexController>{RightHand}/thumbstick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30d88236-60cc-4434-98dc-062d1cdbbed6",
+                    "path": "<ValveIndexController>{LeftHand}/thumbstick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

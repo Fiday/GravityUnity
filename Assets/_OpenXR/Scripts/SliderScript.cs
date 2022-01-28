@@ -5,7 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SliderScript : XRGrabInteractable
 { 
-    /*
     private float _range = 1;
 
 
@@ -52,6 +51,8 @@ public class SliderScript : XRGrabInteractable
         
 
         //  Debug.Log(GetCurrentValue());
-    }*/
+    }
+
+
 
 }

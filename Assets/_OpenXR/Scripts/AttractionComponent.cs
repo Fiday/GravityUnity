@@ -28,7 +28,6 @@ public class AttractionComponent : MonoBehaviour
         set => _mass = value;
     }
     
-    /*
     [SerializeField]  private float _minWeight;
     public float MinWeight
     {
@@ -41,7 +40,6 @@ public class AttractionComponent : MonoBehaviour
         get => _maxWeight;
         set => _maxWeight = value;
     }
-    */
 
     private void Start()
     {
@@ -72,7 +70,7 @@ public class AttractionComponent : MonoBehaviour
         //scale force by weight
         Vector3 forceWithDirection = force * (heading / heading.magnitude);
 
-        return forceWithDirection;
+        return forceWithDirection * Time.deltaTime;
     }
 
     private void AddForceToAffectedObjects()

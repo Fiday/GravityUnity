@@ -5,14 +5,14 @@ public class Blackhole : MonoBehaviour
 {
     private float _currPullRadius;
 
-    // Update is called once per frame
-    void Start()
+    public bool DestroyOnContact { get; set; } = false;
+
+    private void OnTriggerEnter(Collider other)
     {
-        var scale = GetComponent<AttractionComponent>().PullRadius*2;
-        if (Math.Abs(scale - _currPullRadius) > 0.01)
+        if (DestroyOnContact)
         {
-            transform.GetChild(0).localScale = new Vector3(scale, scale, scale);
-            _currPullRadius = scale;
+            Destroy(other.gameObject);
         }
     }
 }
+
