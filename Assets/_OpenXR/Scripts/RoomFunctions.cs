@@ -20,7 +20,6 @@ public class RoomFunctions : MonoBehaviour
     {
         if (IsActive && Math.Abs(Lever.transform.GetChild(0).position.y - 1.2) < 0.01f)
         {
-            Debug.Log("DISABLE ROOOOOM");
             GameObject.Find("Pedestal").GetComponent<Pedestal>().StartMovement();
             gameObject.SetActive(false);
             IsActive = false;

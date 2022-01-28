@@ -1,36 +1,55 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
 public class TextUpdate : MonoBehaviour
 {
+    /*
     private float previousValue;
 
-    private TextMeshPro textmesh;
+    private TextMeshPro textmeshMass;
 
     private AttractionComponent attractionComponent;
+
+    private SliderScript _sliderScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        textmesh = GetComponent<TextMeshPro>();
-        attractionComponent = GameObject.FindWithTag("Blackhole").GetComponent<AttractionComponent>();
-        textmesh.text = attractionComponent.Mass.ToString("0.#e+0");
-        previousValue = GetComponentInChildren<SliderScript>().GetCurrentValue();
+        // textmeshMass = GameObject.Find("ValueMass").GetComponent<TextMeshPro>();
+        // attractionComponent = GameObject.FindWithTag("Blackhole").GetComponent<AttractionComponent>();
+        // textmeshMass.text = attractionComponent.Mass.ToString("0.#e+0");
+        _sliderScript = GetComponentInChildren<SliderScript>();
+        _sliderScript.SetCurrentValue(GetScaledValue(attractionComponent.Mass, attractionComponent.MinWeight,
+            attractionComponent.MaxWeight, 0, 1));
+        previousValue = _sliderScript.GetCurrentValue();
     }
 
-    // Update is called once per frame
     void Update()
     {
-     //  var currentValue = GetComponentInChildren<SliderScript>().GetCurrentValue();
-     //  if (Math.Abs(currentValue - previousValue) > 0.01)
-     //  {
-     //      attractionComponent.Mass = attractionComponent.MinWeight +
-     //                                 ((attractionComponent.MaxWeight * currentValue) - attractionComponent.MinWeight);
-     //      textmesh.text = attractionComponent.Mass.ToString("0.#e+0");
-     //      previousValue = currentValue;
-     //  }
+        var currentValue = GameObject.FindGameObjectWithTag("Body").GetComponent<SliderScript>().GetCurrentValue();
+        Debug.Log($"currentvalue {currentValue}");
+        if (Math.Abs(currentValue - previousValue) > 0.01)
+        {
+            attractionComponent.Mass = GetScaledValue(currentValue, 0, 1, attractionComponent.MinWeight,
+                attractionComponent.MaxWeight);
+
+            textmeshMass.text = attractionComponent.Mass.ToString("0.#e+0");
+            previousValue = currentValue;
+        }
+
+        Debug.Log(attractionComponent.Mass);
     }
+
+   float GetScaledValue(float x, float min, float max, float newMin, float newMax)
+    {
+        /#1#/return (((newMax - newMin) * (x - min)) / (max - min)) + newMin;
+
+        return ((x - min) / (max - min))
+            * (newMax - newMin) + newMin;#1#
+        return 1;
+    }*/
 }

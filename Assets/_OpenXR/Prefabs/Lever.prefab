@@ -46,8 +46,8 @@ Rigidbody:
   m_GameObject: {fileID: 2821906675928053559}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Min: 0
   Max: 50
-  Value: 25
+  triggerRotation: 70
 --- !u!114 &1917623348985066936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +200,7 @@ HingeJoint:
   m_UseSpring: 1
   m_Spring:
     spring: 0
-    damper: 2
+    damper: 0
     targetPosition: 0
   m_UseMotor: 0
   m_Motor:
@@ -328,7 +328,6 @@ GameObject:
   - component: {fileID: 6895447712586066961}
   - component: {fileID: 2065258013143524453}
   - component: {fileID: 5870980699503529869}
-  - component: {fileID: 8341526956760046915}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -401,17 +400,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8341526956760046915
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4049555782570090415}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

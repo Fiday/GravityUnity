@@ -28,6 +28,7 @@ public class AttractionComponent : MonoBehaviour
         set => _mass = value;
     }
     
+    /*
     [SerializeField]  private float _minWeight;
     public float MinWeight
     {
@@ -40,6 +41,7 @@ public class AttractionComponent : MonoBehaviour
         get => _maxWeight;
         set => _maxWeight = value;
     }
+    */
 
     private void Start()
     {
@@ -50,7 +52,7 @@ public class AttractionComponent : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         if (attracts)
             AddForceToAffectedObjects();
@@ -64,13 +66,13 @@ public class AttractionComponent : MonoBehaviour
         float distanceSq = distance * distance;
 
         //calculate gravitational force (F=G*m1*m2/r^2)
-        float force = Gravity.GravityConstant * (Mass * mass  / distanceSq);
+        float force = Gravity.GravityConstant * ((mass * Mass) / distanceSq);
 
         Vector3 heading = currPosition - position;
         //scale force by weight
         Vector3 forceWithDirection = force * (heading / heading.magnitude);
 
-        return forceWithDirection * Time.deltaTime;
+        return forceWithDirection;
     }
 
     private void AddForceToAffectedObjects()

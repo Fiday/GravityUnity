@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using _OpenXR.Scripts;
@@ -17,9 +18,13 @@ public class Sonification : MonoBehaviour
         
     }
     
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
-        other.gameObject.GetComponent<SoundScript>().PlaySound();
-    }
+        if (other.TryGetComponent(typeof(SoundScript), out Component component))
+        {
+            ((SoundScript) component).PlaySound();
+        }
+        //other.gameObject.GetComponent<SoundScript>().PlaySound();
+    }*/
     
 }

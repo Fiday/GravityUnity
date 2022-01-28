@@ -4,7 +4,7 @@ namespace _OpenXR.Scripts
 {
     public class SoundScript : MonoBehaviour
     {
-        public AudioClip sound;
+        /*public AudioClip sound;
 
         public void AddSound(string path)
         {
@@ -19,6 +19,6 @@ namespace _OpenXR.Scripts
             {
                 GetComponent<AudioSource>().Play();
             }
-        }
+        }*/
     }
 }

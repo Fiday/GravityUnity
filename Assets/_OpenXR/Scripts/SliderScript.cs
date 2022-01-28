@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class SliderScript : XRGrabInteractable
-{
+{ 
+    /*
     private float _range = 1;
 
 
@@ -38,15 +39,19 @@ public class SliderScript : XRGrabInteractable
             SetCurrentValue(0);
         }
 
+
+       
         if (isSelected)
         {
             //GetComponent<XRGrabInteractable>().isSelected
             var hand = GameObject.Find("RightHand Controller");
-            Vector3 newPos = new Vector3(hand.transform.position.x, 0, 0);
-            transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime);
+            transform.localPosition =
+                new Vector3(transform.localPosition.x, 0f,
+                    0f); //= Vector3.Lerp(transform.localPosition, newPos, Time.deltaTime);
         }
+        
 
+        //  Debug.Log(GetCurrentValue());
+    }*/
 
-        Debug.Log(GetCurrentValue());
-    }
 }

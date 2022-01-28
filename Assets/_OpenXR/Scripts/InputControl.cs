@@ -140,7 +140,7 @@ public class InputControl : XRGrabInteractable
     private void UpdateTrail()
     {
         var localScale = transform.localScale;
-        _trailRenderer.startWidth = localScale.x / 4f;
-        _trailRenderer.endWidth = localScale.x / 4f;
+        _trailRenderer.startWidth = localScale.x / 5f;
+        _trailRenderer.endWidth = localScale.x / 5f;
     }
 }

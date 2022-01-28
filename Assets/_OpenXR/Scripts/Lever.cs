@@ -7,6 +7,7 @@ using UnityEngine.PlayerLoop;
 
 public class Lever : MonoBehaviour
 {
+    /*
     [Tooltip("Minimum angle in degrees, get's updated by and updates the joint if there is one")]
     public float Min = 0;
 
@@ -17,14 +18,15 @@ public class Lever : MonoBehaviour
 
     public bool GetCurrentState()
     {
-        Debug.Log($" {gameObject.name} {transform.rotation.eulerAngles.x}");
+      //  Debug.Log($" {gameObject.name} {transform.rotation.eulerAngles.x}");
         return transform.rotation.eulerAngles.x <= triggerRotation;
     }
 
     private void Update()
     {
-        Debug.Log(GetCurrentState());
+     //   Debug.Log(GetCurrentState());
     }
+    */
 
     /*void CheckHingeValue()
     {

@@ -32,9 +32,11 @@ public class AssetInputExample : MonoBehaviour
     private void SpawnNewWithVelocityGravityObject(InputAction.CallbackContext context)
     {
         GameObject gravityObject = Instantiate(planetPrefab, transform);
-        gravityObject.transform.position = new Vector3(-1.5f, 1.5f, 0f);
         GameObject blackhole = GameObject.FindWithTag("Blackhole");
-        float distance = Vector3.Distance(blackhole.transform.position, gravityObject.transform.position);
+        
+        var position = blackhole.transform.position;
+        gravityObject.transform.position = position +  new Vector3(-2f,0f, 0f);
+        float distance = Vector3.Distance(position, gravityObject.transform.position);
         gravityObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0,
             Gravity.OrbitVelocity(blackhole.GetComponent<AttractionComponent>().Mass, distance));
     }
