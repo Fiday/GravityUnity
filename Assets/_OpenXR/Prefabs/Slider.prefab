@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7088036790464968334}
   - component: {fileID: 1550770364864567460}
   - component: {fileID: 8399982757255362805}
-  - component: {fileID: 6182385293692958439}
+  - component: {fileID: 7668239414297423578}
   m_Layer: 0
   m_Name: SliderHead
   m_TagString: Untagged
@@ -217,7 +217,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
---- !u!114 &6182385293692958439
+--- !u!114 &7668239414297423578
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,12 +226,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3690645715673282352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Script: {fileID: 11500000, guid: d19091cb1d7b49841a35924d72c883ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders:
-  - {fileID: 1550770364864567460}
+  m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -303,7 +302,7 @@ MonoBehaviour:
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
-  m_TrackPosition: 1
+  m_TrackPosition: 0
   m_SmoothPosition: 0
   m_SmoothPositionAmount: 5
   m_TightenPosition: 0.5
@@ -342,7 +341,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5122832712196481458}
-  - component: {fileID: 1713852888763418960}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -367,15 +365,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1713852888763418960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6010835161745053924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d19091cb1d7b49841a35924d72c883ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

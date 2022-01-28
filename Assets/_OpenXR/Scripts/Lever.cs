@@ -13,12 +13,18 @@ public class Lever : MonoBehaviour
     [Tooltip("Maximum angle in degrees, get's updated by and updates the joint if there is one")]
     public float Max = 0;
 
-    private void Update()
+    public float triggerRotation = 70f;
+
+    public bool GetCurrentState()
     {
-        /*Debug.Log(
-            transform.GetChild(0).transform.position);*/
+        Debug.Log($" {gameObject.name} {transform.rotation.eulerAngles.x}");
+        return transform.rotation.eulerAngles.x <= triggerRotation;
     }
 
+    private void Update()
+    {
+        Debug.Log(GetCurrentState());
+    }
 
     /*void CheckHingeValue()
     {

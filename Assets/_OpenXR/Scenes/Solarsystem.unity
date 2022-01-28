@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 149.6
-  size: 12.756
+  orbitRadius: 1000
+  size: 10
 --- !u!1 &218281206
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +555,7 @@ PrefabInstance:
     - target: {fileID: -8509879455734871133, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: _outOfBounds
-      value: 2000
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 727885504999378486, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -682,8 +682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 2870.99
-  size: 51.118
+  orbitRadius: 19200
+  size: 40
 --- !u!1001 &405791559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -821,8 +821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 778.33
-  size: 142.984
+  orbitRadius: 5200
+  size: 110
 --- !u!1001 &503915441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1210,8 +1210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 108.2
-  size: 12.104
+  orbitRadius: 720
+  size: 9.49
 --- !u!1001 &635775386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1837,8 +1837,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 227.94
-  size: 6.794
+  orbitRadius: 1500
+  size: 5
 --- !u!1001 &1125942123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1976,8 +1976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 4504
-  size: 49.532
+  orbitRadius: 30100
+  size: 30
 --- !u!1 &1202140159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,17 +2188,17 @@ PrefabInstance:
     - target: {fileID: 6294585129965210280, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1391
+      value: 139.1
       objectReference: {fileID: 0}
     - target: {fileID: 6294585129965210280, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1391
+      value: 139.1
       objectReference: {fileID: 0}
     - target: {fileID: 6294585129965210280, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1391
+      value: 139.1
       objectReference: {fileID: 0}
     - target: {fileID: 6294585129965210280, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
@@ -2262,6 +2262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6335478059534950820, guid: 2033db0a590a704479033e4f69730b67,
         type: 3}
+      propertyPath: _mass
+      value: 1.989e+16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335478059534950820, guid: 2033db0a590a704479033e4f69730b67,
+        type: 3}
       propertyPath: attracts
       value: 1
       objectReference: {fileID: 0}
@@ -2274,6 +2279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335478059534950820, guid: 2033db0a590a704479033e4f69730b67,
+        type: 3}
+      propertyPath: _pullRadius
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2033db0a590a704479033e4f69730b67, type: 3}
@@ -2343,7 +2353,7 @@ PrefabInstance:
     - target: {fileID: 727885504999378486, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2896
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 727885504999378486, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -2353,7 +2363,7 @@ PrefabInstance:
     - target: {fileID: 727885504999378486, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -100
+      value: -39
       objectReference: {fileID: 0}
     - target: {fileID: 727885504999378486, guid: 41bd00fe8a888554e9887f01d7ae2ea2,
         type: 3}
@@ -2445,8 +2455,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 57.91
-  size: 4.88
+  orbitRadius: 380
+  size: 3.76
 --- !u!1001 &1518724023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2584,8 +2594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51fe7bea0e3dc4e8ae9f8b4293779a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitRadius: 1429.4
-  size: 120.536
+  orbitRadius: 9500
+  size: 90
 --- !u!1 &1826404399
 GameObject:
   m_ObjectHideFlags: 0

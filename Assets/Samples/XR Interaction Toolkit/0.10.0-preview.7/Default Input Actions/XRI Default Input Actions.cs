@@ -759,6 +759,17 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ee4aaaad-81d4-48c6-9859-165704ed6a2b"",
+                    ""path"": ""<XRController>{RightHand}/thumbstick/Y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSize"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""212a326a-64c4-4c89-90cc-d133c4421abe"",
                     ""path"": ""<ValveIndexController>{LeftHand}/thumbstick/y"",
                     ""interactions"": """",
@@ -770,8 +781,30 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ea869202-da3a-4d65-9035-535fa0f8ff6d"",
+                    ""path"": ""<XRController>{LeftHand}/thumbstick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeWeigth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4718937a-ef0f-497e-88d4-7013d1d43cef"",
                     ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnWithVelocityAndPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61429a71-3967-4896-b5e0-d75de5d19651"",
+                    ""path"": ""<XRController>{LeftHand}/primaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

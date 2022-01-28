@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
-public class SliderScript : MonoBehaviour
+public class SliderScript : XRGrabInteractable
 {
     private float _range = 1;
 
@@ -14,20 +15,20 @@ public class SliderScript : MonoBehaviour
 
     public float GetCurrentValue()
     {
-        var x = transform.GetChild(1).transform.localPosition.x;
+        var x = transform.localPosition.x;
 
         return x / 2 + 0.5f;
     }
 
-    void SetCurrentValue(float x)
+    public void SetCurrentValue(float x)
     {
-        transform.GetChild(1).transform.localPosition = new Vector3((x - 0.5f) * 2, 0f, 0f);
+        transform.localPosition = new Vector3((x - 0.5f) * 2, 0f, 0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        var pos = transform.GetChild(1).transform.localPosition;
+        var pos = transform.localPosition;
         if (pos.x > _range)
         {
             SetCurrentValue(_range);
@@ -36,8 +37,16 @@ public class SliderScript : MonoBehaviour
         {
             SetCurrentValue(0);
         }
-        
-        
+
+        if (isSelected)
+        {
+            //GetComponent<XRGrabInteractable>().isSelected
+            var hand = GameObject.Find("RightHand Controller");
+            Vector3 newPos = new Vector3(hand.transform.position.x, 0, 0);
+            transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime);
+        }
+
+
         Debug.Log(GetCurrentValue());
     }
 }

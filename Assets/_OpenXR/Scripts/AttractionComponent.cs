@@ -27,6 +27,19 @@ public class AttractionComponent : MonoBehaviour
         get => _mass;
         set => _mass = value;
     }
+    
+    [SerializeField]  private float _minWeight;
+    public float MinWeight
+    {
+        get => _minWeight;
+        set => _minWeight = value;
+    }
+    [SerializeField]  private float _maxWeight;
+    public float MaxWeight
+    {
+        get => _maxWeight;
+        set => _maxWeight = value;
+    }
 
     private void Start()
     {

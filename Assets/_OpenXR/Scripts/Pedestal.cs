@@ -21,7 +21,6 @@ namespace _OpenXR.Scripts
             while (elapsedTime < time)
             {
                 transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
-                //Debug.Log(transform.position);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
