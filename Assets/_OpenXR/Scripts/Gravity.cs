@@ -5,7 +5,7 @@ namespace _OpenXR.Scripts
 {
     public static class Gravity
     {
-        private static int _gravitationExponent = -11;
+        private static int _gravitationExponent = -9;
 
         public static readonly float GravityConstant = (float) (6.67f * Math.Pow(10, _gravitationExponent));
 

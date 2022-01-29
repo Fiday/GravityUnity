@@ -7,6 +7,7 @@ public class AssetInputExample : MonoBehaviour
 {
     public InputActionReference spawnNewGravityObject;
     public InputActionReference spawnNewWithVelocityGravityObject;
+    public InputActionReference resetBalls;
     public GameObject planetPrefab;
     public Vector3 spawnOffset = new Vector3(0.2f, -0.4f, 0.3f);
 
@@ -14,12 +15,15 @@ public class AssetInputExample : MonoBehaviour
     {
         spawnNewGravityObject.action.canceled += SpawnNewGravityObject;
         spawnNewWithVelocityGravityObject.action.canceled += SpawnNewWithVelocityGravityObject;
+        resetBalls.action.canceled += ResetBalls;
     }
 
     private void OnDestroy()
     {
         spawnNewGravityObject.action.canceled -= SpawnNewGravityObject;
         spawnNewWithVelocityGravityObject.action.canceled -= SpawnNewWithVelocityGravityObject;
+        resetBalls.action.canceled -= ResetBalls;
+
     }
 
     private void SpawnNewGravityObject(InputAction.CallbackContext context)
@@ -45,5 +49,12 @@ public class AssetInputExample : MonoBehaviour
         GameObject gravityObject = Instantiate(planetPrefab, transform);
         gravityObject.transform.position = GameObject.Find("Main Camera").transform.position + spawnOffset ;
         gravityObject.GetComponent<SoundScript>().AddSound(sound);
+    }
+
+    private void ResetBalls(InputAction.CallbackContext context)
+    {
+        foreach (Transform child in transform) {
+            Destroy(child.gameObject);
+        }
     }
 }

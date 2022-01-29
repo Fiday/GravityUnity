@@ -51,9 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attracts: 1
   _pullRadius: 20
-  _mass: 5e+10
-  _minWeight: 0
-  _maxWeight: 0
+  _mass: 1e+9
 --- !u!114 &2167144738579287091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +64,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a38d9078a7348f45ba07a00ee231f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minWeight: 0
+  _maxWeight: 0
 --- !u!135 &8457481899609946041
 SphereCollider:
   m_ObjectHideFlags: 0

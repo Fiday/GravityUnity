@@ -719,6 +719,15 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""12fef39e-74c2-4da3-b4aa-c531ed3d7914"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -831,6 +840,17 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f3cfd0d-7c87-4e0c-bcbc-7fe4532eb5d9"",
+                    ""path"": ""<XRController>{LeftHand}/secondaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -938,6 +958,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_Custom_ChangeWeigth = m_Custom.FindAction("ChangeWeigth", throwIfNotFound: true);
         m_Custom_SpawnWithVelocityAndPos = m_Custom.FindAction("SpawnWithVelocityAndPos", throwIfNotFound: true);
         m_Custom_Newaction = m_Custom.FindAction("New action", throwIfNotFound: true);
+        m_Custom_Reset = m_Custom.FindAction("Reset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1302,6 +1323,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     private readonly InputAction m_Custom_ChangeWeigth;
     private readonly InputAction m_Custom_SpawnWithVelocityAndPos;
     private readonly InputAction m_Custom_Newaction;
+    private readonly InputAction m_Custom_Reset;
     public struct CustomActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -1312,6 +1334,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         public InputAction @ChangeWeigth => m_Wrapper.m_Custom_ChangeWeigth;
         public InputAction @SpawnWithVelocityAndPos => m_Wrapper.m_Custom_SpawnWithVelocityAndPos;
         public InputAction @Newaction => m_Wrapper.m_Custom_Newaction;
+        public InputAction @Reset => m_Wrapper.m_Custom_Reset;
         public InputActionMap Get() { return m_Wrapper.m_Custom; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1339,6 +1362,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Newaction.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnNewaction;
                 @Newaction.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnNewaction;
                 @Newaction.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnNewaction;
+                @Reset.started -= m_Wrapper.m_CustomActionsCallbackInterface.OnReset;
+                @Reset.performed -= m_Wrapper.m_CustomActionsCallbackInterface.OnReset;
+                @Reset.canceled -= m_Wrapper.m_CustomActionsCallbackInterface.OnReset;
             }
             m_Wrapper.m_CustomActionsCallbackInterface = instance;
             if (instance != null)
@@ -1361,6 +1387,9 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Newaction.started += instance.OnNewaction;
                 @Newaction.performed += instance.OnNewaction;
                 @Newaction.canceled += instance.OnNewaction;
+                @Reset.started += instance.OnReset;
+                @Reset.performed += instance.OnReset;
+                @Reset.canceled += instance.OnReset;
             }
         }
     }
@@ -1437,5 +1466,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         void OnChangeWeigth(InputAction.CallbackContext context);
         void OnSpawnWithVelocityAndPos(InputAction.CallbackContext context);
         void OnNewaction(InputAction.CallbackContext context);
+        void OnReset(InputAction.CallbackContext context);
     }
 }
