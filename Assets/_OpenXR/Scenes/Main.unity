@@ -804,6 +804,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabe2287b4a421040aa3d6b9f5eb23f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &776483135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f9d6c855ae3d1774398b1ecbc58766db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1883195303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &797944179 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3928455450593744698, guid: 2033db0a590a704479033e4f69730b67,
@@ -2001,6 +2007,7 @@ GameObject:
   - component: {fileID: 1278851319}
   - component: {fileID: 1278851317}
   - component: {fileID: 1278851316}
+  - component: {fileID: 1278851320}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -2289,6 +2296,19 @@ MonoBehaviour:
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!114 &1278851320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278851314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211c3e5e85cb4070b2686c92218b0345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 1883195305}
 --- !u!1 &1286300540 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6329785039853847244, guid: 6d7e3b5d0a870594c9472d49f1198248,
@@ -2542,6 +2562,39 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1883195303}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1883195305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776483135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad2385f2b9b4046a2c02d6c2c62e3a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+--- !u!95 &1883195306
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776483135}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: f9d6c855ae3d1774398b1ecbc58766db, type: 3}
+  m_Controller: {fileID: 9100000, guid: 669ca71df6794406b3fe1e68042ce278, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2127187148
 GameObject:
   m_ObjectHideFlags: 0
