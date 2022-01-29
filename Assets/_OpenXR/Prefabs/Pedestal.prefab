@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1003479117157196205}
   - component: {fileID: 1728479609237094718}
   m_Layer: 0
-  m_Name: Pedalstal
+  m_Name: Pedestal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
