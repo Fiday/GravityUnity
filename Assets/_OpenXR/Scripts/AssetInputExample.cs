@@ -1,3 +1,4 @@
+using System;
 using _OpenXR.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,8 +28,6 @@ public class AssetInputExample : MonoBehaviour
         gravityObject.transform.position = GameObject.Find("Main Camera").transform.position + spawnOffset ;
     }
 
- 
-
     private void SpawnNewWithVelocityGravityObject(InputAction.CallbackContext context)
     {
         GameObject gravityObject = Instantiate(planetPrefab, transform);
@@ -39,5 +38,12 @@ public class AssetInputExample : MonoBehaviour
         float distance = Vector3.Distance(position, gravityObject.transform.position);
         gravityObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0,
             Gravity.OrbitVelocity(blackhole.GetComponent<AttractionComponent>().Mass, distance));
+    }
+
+    public void SpawnPlanetWithSound(AudioClip sound)
+    {
+        GameObject gravityObject = Instantiate(planetPrefab, transform);
+        gravityObject.transform.position = GameObject.Find("Main Camera").transform.position + spawnOffset ;
+        gravityObject.GetComponent<SoundScript>().AddSound(sound);
     }
 }

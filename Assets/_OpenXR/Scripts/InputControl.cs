@@ -1,4 +1,5 @@
 using System;
+using _OpenXR.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -34,6 +35,7 @@ public class InputControl : XRGrabInteractable
     [SerializeField] private InputActionReference toggleAttraction;
 
     [SerializeField] private  Material sunMaterial;
+    
     [SerializeField] private Material planetMaterial;
 
     protected override void Awake()
@@ -86,6 +88,7 @@ public class InputControl : XRGrabInteractable
             {
                 ApplyScale(_currentSize);
                 ApplyWeightScale(_currentWeight);
+                //GetComponent<SoundScript>().AddSound();
             }
 
             var format = GetComponent<AttractionComponent>().Mass > SCIENTIFIC_CUTOFF
@@ -102,13 +105,11 @@ public class InputControl : XRGrabInteractable
     private void ChangeBallSize(InputAction.CallbackContext context)
     {
         _currentSize = context.ReadValue<float>();
-        // Debug.Log($"Size: {_currentSize}");
     }
 
     private void ChangeBallWeight(InputAction.CallbackContext context)
     {
         _currentWeight = context.ReadValue<float>();
-        // Debug.Log($"Weight: {_currentWeight}");
     }
 
     private void ApplyScale(float value)

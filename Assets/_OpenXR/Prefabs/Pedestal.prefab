@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4687524648664875226}
   - component: {fileID: 1003479117157196205}
   - component: {fileID: 1728479609237094718}
+  - component: {fileID: -243970578489610739}
   m_Layer: 0
   m_Name: Pedestal
   m_TagString: Untagged
@@ -98,3 +99,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-243970578489610739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725012983420525405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67421db3a88246a4820534d20c1363ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPos: {x: 0, y: -100, z: -4}
+  EndPos: {x: 0, y: -10, z: -4}

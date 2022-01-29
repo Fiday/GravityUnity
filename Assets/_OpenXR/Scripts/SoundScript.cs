@@ -5,27 +5,24 @@ namespace _OpenXR.Scripts
 {
     public class SoundScript : MonoBehaviour
     {
-        public AudioClip sound;
 
         private void Start()
         {
-            AddSound("");
         }
 
-        public void AddSound(string path)
+        public void AddSound(AudioClip sound)
         {
-           // sound = (AudioClip) Resources.Load(path);
             gameObject.AddComponent<AudioSource>();
             GetComponent<AudioSource>().clip = sound;
         }
 
         public void PlaySound()
         {
-            if (sound != null)
+            if (TryGetComponent(typeof(AudioSource), out Component component))
             {
-                var audiosource = GetComponent<AudioSource>();
-                    //audiosource.volume = size und so 
-                    audiosource.Play();
+                var source = (AudioSource) component;
+                source.volume = transform.localScale.x * 2;
+                source.Play();
             }
         }
     }
