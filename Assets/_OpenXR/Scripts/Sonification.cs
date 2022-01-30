@@ -11,8 +11,6 @@ public class Sonification : MonoBehaviour
         if (other.TryGetComponent(typeof(SoundScript), out Component component))
         {
             ((SoundScript) component).PlaySound();
-            Debug.Log("soundplayed");
         }
-        //other.gameObject.GetComponent<SoundScript>().PlaySound();
     }
 }

@@ -44,15 +44,12 @@ public class Lever : MonoBehaviour
         {
             _lastSwitch = true;
             onEvent?.Invoke();
-            Debug.Log(true);
         }
 
         if (!state && _lastSwitch)
         {
             _lastSwitch = false;
             offEvent?.Invoke();
-            Debug.Log(false);
-
         }
     }
 
