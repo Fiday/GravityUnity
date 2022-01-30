@@ -2884,7 +2884,7 @@ PrefabInstance:
     - target: {fileID: 2407936933248667287, guid: 278d49e42737b8147a9fefdf610ee438,
         type: 3}
       propertyPath: holdEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeSize
+      value: ChangeWeight
       objectReference: {fileID: 0}
     - target: {fileID: 2407936933248667287, guid: 278d49e42737b8147a9fefdf610ee438,
         type: 3}
@@ -3144,7 +3144,7 @@ PrefabInstance:
     - target: {fileID: 7879290842028259279, guid: 278d49e42737b8147a9fefdf610ee438,
         type: 3}
       propertyPath: holdEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeSize
+      value: ChangeWeight
       objectReference: {fileID: 0}
     - target: {fileID: 7879290842028259279, guid: 278d49e42737b8147a9fefdf610ee438,
         type: 3}
@@ -4720,7 +4720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c0ec9367b816d4eb8a96c99d058a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lever: {fileID: 0}
   IsActive: 1
 --- !u!114 &1555827677
 MonoBehaviour:

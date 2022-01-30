@@ -9,7 +9,6 @@ using Object = UnityEngine.Object;
 
 public class SongSpawnerScript : MonoBehaviour
 {
-    //public Dictionary<AudioClip, float> Clips { get; set; }
     public List<AudioClip> Clips;
     [SerializeField] private GameObject planetPrefab;
     public Vector3 spawnOffset = new(-2f, 0f, 0f);

@@ -5,11 +5,6 @@ namespace _OpenXR.Scripts
 {
     public class SoundScript : MonoBehaviour
     {
-
-        private void Start()
-        {
-        }
-
         public void AddSound(AudioClip sound)
         {
             gameObject.AddComponent<AudioSource>();

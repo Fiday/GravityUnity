@@ -8,6 +8,7 @@ namespace _OpenXR.Scripts
     {
         public Vector3 StartPos = new Vector3(0,-100,-4);
         public Vector3 EndPos= new Vector3(0,-10,-4);
+
         public void StartMovement(bool up)
         {
             StartCoroutine(!up ? MoveUpSmoothLerp(0.75f) : MoveDownSmoothLerp(0.75f));

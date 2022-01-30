@@ -7,7 +7,6 @@ public class Blackhole : MonoBehaviour
 
     public bool DestroyOnContact { get; set; }
 
-
     [SerializeField] private float _minWeight;
 
     public float MinWeight
@@ -32,7 +31,7 @@ public class Blackhole : MonoBehaviour
         }
     }
 
-    public void ChangeSize(float scalingFactor)
+    public void ChangeWeight(float scalingFactor)
     {
             var attractionComp = GetComponent<AttractionComponent>();
             var temp = attractionComp.Mass;

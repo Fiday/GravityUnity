@@ -7,20 +7,19 @@ using UnityEngine.InputSystem;
 public class AttractionComponent : MonoBehaviour
 {
     [SerializeField] private bool attracts;
+    [SerializeField] private float _pullRadius;
+    [SerializeField] private float _mass;
 
     public bool Attracts
     {
         get => attracts;
         set => attracts = value;
     }
-    [SerializeField] private float _pullRadius;
 
     public float PullRadius
     {
         get => _pullRadius;
     }
-
-    [SerializeField] private float _mass;
 
     public float Mass
     {
